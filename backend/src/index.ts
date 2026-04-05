@@ -37,12 +37,9 @@ const allowedOrigins = [
 ].filter(Boolean) as string[]
 
 app.use('*', cors({
-  origin: (origin) => allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+  origin: '*',
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-  exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
-  maxAge: 600,
-  credentials: true,
+  allowHeaders: ['Content-Type', 'Authorization'],
 }))
 
 // --- 2. Public Routes ---
