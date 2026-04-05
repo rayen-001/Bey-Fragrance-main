@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { prisma } from '../db/prisma.js'
-import { authMiddleware } from '../middleware/auth.js'
-import { getSupabase } from '../db/supabase.js'
+import { prisma } from '../db/prisma'
+import { authMiddleware } from '../middleware/auth'
+import { getSupabase } from '../db/supabase'
 
 const orders = new Hono()
 

@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { prisma } from '../db/prisma.js'
+import { prisma } from '../db/prisma'
 import { z } from 'zod'
-import { getSupabase } from '../db/supabase.js'
+import { getSupabase } from '../db/supabase'
 
 const fragrances = new Hono()
 

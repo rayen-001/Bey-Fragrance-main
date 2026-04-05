@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
-import { prisma } from '../db/prisma.js'
-import { authMiddleware } from '../middleware/auth.js'
+import { prisma } from '../db/prisma'
+import { authMiddleware } from '../middleware/auth'
 import { z } from 'zod'
 
 const cart = new Hono<{

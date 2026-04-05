@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
-import { getSupabase } from '../db/supabase.js'
-import { authMiddleware } from '../middleware/auth.js'
-import { prisma } from '../db/prisma.js'
+import { getSupabase } from '../db/supabase'
+import { authMiddleware } from '../middleware/auth'
+import { prisma } from '../db/prisma'
 
 const upload = new Hono()
 

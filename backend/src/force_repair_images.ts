@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import { prisma } from './db/prisma.js'
+import { prisma } from './db/prisma'
 
 const UPDATES = [
   { name: "Savage Spirit", url: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=800" },

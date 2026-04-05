@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
-import { prisma } from '../db/prisma.js'
-import { getSupabase } from '../db/supabase.js'
+import { prisma } from '../db/prisma'
+import { getSupabase } from '../db/supabase'
 
 const reviews = new Hono()
 

@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { prisma } from './db/prisma.js';
+import { prisma } from './db/prisma';
 
 async function applyTrigger() {
   const sqlPath = path.resolve('./prisma/user_sync_trigger.sql');

@@ -1,5 +1,5 @@
 import { Context, Next } from 'hono'
-import { getSupabase } from '../db/supabase.js'
+import { getSupabase } from '../db/supabase'
 
 /**
  * JWT Authentication & Role-Based Access Control Middleware using Supabase SDK.

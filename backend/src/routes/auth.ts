@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { prisma } from '../db/prisma.js'
+import { prisma } from '../db/prisma'
 import bcrypt from 'bcryptjs'
 import { sign } from 'hono/jwt'
 import { z } from 'zod'
@@ -115,7 +115,7 @@ auth.post('/login', async (c) => {
   }
 })
 
-import { authMiddleware } from '../middleware/auth.js'
+import { authMiddleware } from '../middleware/auth'
 
 // GET /auth/is-admin: Check if current user is an admin
 auth.get('/is-admin', authMiddleware, async (c) => {
