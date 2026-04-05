@@ -13,14 +13,14 @@ const cart = new Hono<{
 cart.use('*', authMiddleware)
 
 const cartItemSchema = z.object({
-  productId: z.string().uuid(),
-  shippingMethodId: z.string().uuid().nullable().optional(),
+  productId: z.string().min(1),
+  shippingMethodId: z.string().min(1).nullable().optional().transform(v => v || null),
   quantity: z.number().int().positive().default(1)
 })
 
 const syncSchema = z.array(z.object({
-  productId: z.string().uuid(),
-  shippingMethodId: z.string().uuid().nullable().optional(),
+  productId: z.string().min(1),
+  shippingMethodId: z.string().min(1).nullable().optional().transform(v => v || null),
   quantity: z.number().int().positive()
 }))
 
