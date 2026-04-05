@@ -37,7 +37,7 @@ const allowedOrigins = [
 ].filter(Boolean) as string[]
 
 app.use('*', cors({
-  origin: allowedOrigins,
+  origin: (origin) => allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
   exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
