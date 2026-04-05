@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx prisma:*)",
+      "Bash(cmd.exe /c \"node --version && npx --version\")",
+      "Read(//c/Program Files/nodejs//**)",
+      "Read(//c/Users/asus/AppData/Local/Programs/**)",
+      "Read(//c/Users/asus/**)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(node -e ':*)",
+      "Bash(cmd /c \"npx tsc --noEmit 2>&1\")"
+    ]
+  }
+}

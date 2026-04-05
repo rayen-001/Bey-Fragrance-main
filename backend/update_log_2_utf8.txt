@@ -1,0 +1,151 @@
+﻿[dotenv@17.3.1] injecting env (9) from .env -- tip: ÔÜÖ´©Å  write to custom object with { processEnv: myObject }
+­ƒÜÇ Starting surgical DB update...
+­ƒöù Initializing Prisma connection pool...
+node.exe : ÔØî Error 
+during DB update: Prisma
+ClientKnownRequestError:
+ 
+Au caractère Ligne:1 : 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (ÔØî Error durin.   
+ ..nRequestError: :S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+Invalid 
+`prisma.$executeRaw()` 
+invocation:
+
+
+Raw query failed. Code: 
+`42P01`. Message: 
+`relation 
+"ShippingMethod" does 
+not exist`
+    at 
+Gr.handleRequestError (C
+:\Users\asus\Desktop\pro
+jet\Bey-Fragrance-main\b
+ackend\node_modules\@pri
+sma\client\src\runtime\R
+equestHandler.ts:237:13)
+    at Gr.handleAndLogRe
+questError (C:\Users\asu
+s\Desktop\projet\Bey-Fra
+grance-main\backend\node
+_modules\@prisma\client\
+src\runtime\RequestHandl
+er.ts:183:12)
+    at Gr.request (C:\Us
+ers\asus\Desktop\projet\
+Bey-Fragrance-main\backe
+nd\node_modules\@prisma\
+client\src\runtime\Reque
+stHandler.ts:152:12)
+    at process.processTi
+cksAndRejections (node:i
+nternal/process/task_que
+ues:104:5)
+    at async a (C:\Users
+\asus\Desktop\projet\Bey
+-Fragrance-main\backend\
+node_modules\@prisma\cli
+ent\src\runtime\getPrism
+aClient.ts:938:24)
+    at async updateDb (C
+:\Users\asus\Desktop\pro
+jet\Bey-Fragrance-main\b
+ackend\update_sizes_surg
+ical.ts:18:28) {
+  code: 'P2010',
+  meta: {
+    driverAdapterError: 
+DriverAdapterError: 
+TableDoesNotExist
+        at 
+PrismaPgAdapter.onError 
+(file:///C:/Users/asus/D
+esktop/projet/Bey-Fragra
+nce-main/backend/node_mo
+dules/@prisma/adapter-pg
+/dist/index.mjs:651:11)
+        at PrismaPgAdapt
+er.performIO (file:///C:
+/Users/asus/Desktop/proj
+et/Bey-Fragrance-main/ba
+ckend/node_modules/@pris
+ma/adapter-pg/dist/index
+.mjs:646:12)
+        at process.proce
+ssTicksAndRejections (no
+de:internal/process/task
+_queues:104:5)
+        at async PrismaP
+gAdapter.executeRaw (fil
+e:///C:/Users/asus/Deskt
+op/projet/Bey-Fragrance-
+main/backend/node_module
+s/@prisma/adapter-pg/dis
+t/index.mjs:605:13)
+        at async 
+e.interpretNode (C:\User
+s\asus\Desktop\projet\Be
+y-Fragrance-main\backend
+\node_modules\@prisma\cl
+ient-engine-runtime\src\
+interpreter\query-interp
+reter.ts:168:18)
+        at async e.run (
+C:\Users\asus\Desktop\pr
+ojet\Bey-Fragrance-main\
+backend\node_modules\@pr
+isma\client-engine-runti
+me\src\interpreter\query
+-interpreter.ts:94:23)
+        at async 
+e.execute (C:\Users\asus
+\Desktop\projet\Bey-Frag
+rance-main\backend\node_
+modules\@prisma\client\s
+rc\runtime\core\engines\
+client\LocalExecutor.ts:
+81:12)
+        at async 
+jt.request (C:\Users\asu
+s\Desktop\projet\Bey-Fra
+grance-main\backend\node
+_modules\@prisma\client\
+src\runtime\core\engines
+\client\ClientEngine.ts:
+492:22)
+        at async 
+Object.singleLoader (C:\
+Users\asus\Desktop\proje
+t\Bey-Fragrance-main\bac
+kend\node_modules\@prism
+a\client\src\runtime\Req
+uestHandler.ts:112:26)
+        at async 
+Gr.request (C:\Users\asu
+s\Desktop\projet\Bey-Fra
+grance-main\backend\node
+_modules\@prisma\client\
+src\runtime\RequestHandl
+er.ts:149:14) {
+      cause: [Object]
+    }
+  },
+  clientVersion: '7.5.0'
+}
+

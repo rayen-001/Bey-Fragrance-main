@@ -1,0 +1,80 @@
+﻿[dotenv@17.3.1] injecting env (9) from .env -- tip: ­ƒöÉ prevent building .env in docker: https://dotenvx.com/prebuild
+node.exe : C:\Users\asus
+\Desktop\projet\Bey-Frag
+rance-main\backend\node_
+modules\@prisma\client\s
+rc\runtime\getPrismaClie
+nt.ts:320
+Au caractère Ligne:1 : 1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo      
+        : NotSpecified  
+  : (C:\Users\asus\D.   
+ ..maClient.ts:320:S    
+tring) [], RemoteEx    
+ception
+    + FullyQualifiedErr 
+   orId : NativeComman  
+  dError
+ 
+        throw new Prisma
+ClientInitializationErro
+r(
+              ^
+
+PrismaClientInitializati
+onError: `PrismaClient` 
+needs to be constructed 
+with a non-empty, valid 
+`PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+    at new t (C:\Users\a
+sus\Desktop\projet\Bey-F
+ragrance-main\backend\no
+de_modules\@prisma\clien
+t\src\runtime\getPrismaC
+lient.ts:320:15)
+    at <anonymous> (C:\U
+sers\asus\Desktop\projet
+\Bey-Fragrance-main\back
+end\update_sizes_surgica
+l.ts:6:16)
+    at ModuleJob.run (no
+de:internal/modules/esm/
+module_job:430:25)
+    at async onImport.tr
+acePromise.__proto__ (no
+de:internal/modules/esm/
+loader:661:26)
+    at async asyncRunEnt
+ryPointWithESMLoader (no
+de:internal/modules/run_
+main:101:5) {
+  clientVersion: 
+'7.5.0',
+  errorCode: undefined,
+  retryable: undefined
+}
+
+Node.js v24.14.1
+

@@ -1,0 +1,29 @@
+﻿[dotenv@17.3.1] injecting env (9) from .env -- tip: ­ƒøí´©Å auth for agents: https://vestauth.com
+­ƒöù Initializing Prisma connection pool...
+Tables in DB: [
+  {
+    "table_name": "users"
+  },
+  {
+    "table_name": "products"
+  },
+  {
+    "table_name": "reviews"
+  },
+  {
+    "table_name": "orders"
+  },
+  {
+    "table_name": "favorites"
+  },
+  {
+    "table_name": "order_items"
+  },
+  {
+    "table_name": "cart_items"
+  },
+  {
+    "table_name": "shipping_methods"
+  }
+]
+

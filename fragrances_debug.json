@@ -1,0 +1,334 @@
+{
+  "success": true,
+  "count": 6,
+  "data": [
+    {
+      "id": "7a6065bc-a2df-4fbe-88d9-3b1e9a8d7e73",
+      "name": "YSL Y Elixir",
+      "description": "The most concentrated Y direction: fresh aromatic lavender/geranium up top, then a deeper, more luxurious oud-woody base.",
+      "price": "12",
+      "category": "Oriental",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dwb18f3db6/pdp/images/728YSL/Y%20Elixir%20About%20Image.jpg?q=85&sh=640&sm=cut&sw=640",
+      "galleryImages": [
+        "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dw3ed8fc70/pdp/images/728YSL/4%20Y%20Elixir%20Oud%20Image.jpg?q=85&sh=300&sm=cut&sw=300"
+      ],
+      "tags": [],
+      "notes": [
+        "Lavender",
+        "Fresh Geranium",
+        "Sensual Oud Wood",
+        "Incense"
+      ],
+      "inspiredBy": "Yves Saint Laurent — Y Elixir",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:14.814Z",
+      "shippingMethods": [
+        {
+          "id": "4240794d-9e87-4c37-b5a3-00252fb352ca",
+          "name": "20ml",
+          "price": "12",
+          "productId": "7a6065bc-a2df-4fbe-88d9-3b1e9a8d7e73",
+          "createdAt": "2026-04-04T03:11:14.919Z",
+          "updatedAt": "2026-04-04T03:11:14.919Z"
+        },
+        {
+          "id": "9ffa3044-af14-4c75-aae4-2b3f12a4c3ab",
+          "name": "50ml",
+          "price": "20",
+          "productId": "7a6065bc-a2df-4fbe-88d9-3b1e9a8d7e73",
+          "createdAt": "2026-04-04T03:11:15.022Z",
+          "updatedAt": "2026-04-04T03:11:15.022Z"
+        },
+        {
+          "id": "a7748c2d-bf68-4447-8404-f4db0106ecf1",
+          "name": "100ml",
+          "price": "30",
+          "productId": "7a6065bc-a2df-4fbe-88d9-3b1e9a8d7e73",
+          "createdAt": "2026-04-04T03:11:15.123Z",
+          "updatedAt": "2026-04-04T03:11:15.123Z"
+        }
+      ]
+    },
+    {
+      "id": "49f9600b-cf42-4833-aad8-700b8d653701",
+      "name": "YSL MYSLF Eau de Parfum",
+      "description": "Clean modern woody-floral: sparkling citrus opening, bright orange blossom heart, then smooth woods/patchouli/ambery musks.",
+      "price": "12",
+      "category": "Floral",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dw71c49ac1/pdp/images/WW-51115YSL/myslf-eau-de-parfum-bottle-visual.jpg?q=85&sh=840&sm=cut&sw=840",
+      "galleryImages": [
+        "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dwe25ca994/pdp/images/WW-51115YSL/myslf-eau-de-parfum-sec-6-visual-2-mobile.jpg?q=85&sh=1000&sm=cut&sw=740"
+      ],
+      "tags": [],
+      "notes": [
+        "Bergamot",
+        "Orange Blossom Absolute",
+        "Woods",
+        "Patchouli",
+        "Ambrofix™"
+      ],
+      "inspiredBy": "Yves Saint Laurent — MYSLF Eau de Parfum",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:15.229Z",
+      "shippingMethods": [
+        {
+          "id": "f6e39e4c-75f5-44b3-a575-88925eb0b7cb",
+          "name": "20ml",
+          "price": "12",
+          "productId": "49f9600b-cf42-4833-aad8-700b8d653701",
+          "createdAt": "2026-04-04T03:11:15.441Z",
+          "updatedAt": "2026-04-04T03:11:15.441Z"
+        },
+        {
+          "id": "126a6ee5-4c98-46dd-a3dd-36e3106c6047",
+          "name": "50ml",
+          "price": "20",
+          "productId": "49f9600b-cf42-4833-aad8-700b8d653701",
+          "createdAt": "2026-04-04T03:11:15.634Z",
+          "updatedAt": "2026-04-04T03:11:15.634Z"
+        },
+        {
+          "id": "bce2ddfe-c3b9-4937-a9f6-1e88ea6358fd",
+          "name": "100ml",
+          "price": "30",
+          "productId": "49f9600b-cf42-4833-aad8-700b8d653701",
+          "createdAt": "2026-04-04T03:11:15.839Z",
+          "updatedAt": "2026-04-04T03:11:15.839Z"
+        }
+      ]
+    },
+    {
+      "id": "f8b57b2f-2f7a-4e8b-9714-9df102c6fd17",
+      "name": "Ralph Lauren Polo Red (Eau de Toilette)",
+      "description": "A bold woody-spicy profile: bright red grapefruit energy, aromatic warmth in the middle, and a darker coffee/woods base.",
+      "price": "12",
+      "category": "Woody",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.ralphlaurenfragrances.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ralphlauren-master-catalog/default/dw28c8a487/images/2024%20Lando%20Polo%20Red/RLFE006/ralph-lauren-fragrances-polo-red-eau-de-toilette-harm-125ml-front.jpg?q=70&sfrm=jpg&sh=430&sm=cut&sw=430",
+      "galleryImages": [
+        "https://www.ralphlaurenfragrances.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ralphlauren-us-Library/default/dw4e326234/images/pdp/RLFE006/pdp-product-adv-dynamic-2-RLFE006.jpg?q=70&sfrm=png&sh=585&sm=cut&sw=585"
+      ],
+      "tags": [],
+      "notes": [
+        "Red Grapefruit",
+        "Coffee",
+        "Redwood",
+        "Cranberry",
+        "Lemon",
+        "Lavender",
+        "Saffron",
+        "Sage"
+      ],
+      "inspiredBy": "Ralph Lauren — Polo Red Eau de Toilette",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:16.047Z",
+      "shippingMethods": [
+        {
+          "id": "22062ef0-1655-409b-9ab5-06daaa3ef0ca",
+          "name": "20ml",
+          "price": "12",
+          "productId": "f8b57b2f-2f7a-4e8b-9714-9df102c6fd17",
+          "createdAt": "2026-04-04T03:11:16.149Z",
+          "updatedAt": "2026-04-04T03:11:16.149Z"
+        },
+        {
+          "id": "b024bf0a-0cf7-4fba-a677-4bf7ee7d3547",
+          "name": "50ml",
+          "price": "20",
+          "productId": "f8b57b2f-2f7a-4e8b-9714-9df102c6fd17",
+          "createdAt": "2026-04-04T03:11:16.271Z",
+          "updatedAt": "2026-04-04T03:11:16.271Z"
+        },
+        {
+          "id": "e767974e-3396-428c-8fcf-27f6aad1cec8",
+          "name": "100ml",
+          "price": "30",
+          "productId": "f8b57b2f-2f7a-4e8b-9714-9df102c6fd17",
+          "createdAt": "2026-04-04T03:11:16.455Z",
+          "updatedAt": "2026-04-04T03:11:16.455Z"
+        }
+      ]
+    },
+    {
+      "id": "45289d4a-9c1a-4393-9f61-d4b566216ea7",
+      "name": "Ralph Lauren Polo Blue (Eau de Toilette)",
+      "description": "Classic fresh aquatic-citrus style: watery melon freshness, clean herbal tones, and a soft suede/musk base.",
+      "price": "12",
+      "category": "Fresh",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.ralphlaurenfragrances.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ralphlauren-master-catalog/default/dw925533d8/images/pdp/RLFE001/ralph-lauren-fragrances-polo-blue-eau-de-toilette-75ml-front.jpg?q=70&sfrm=jpg&sh=430&sm=cut&sw=430",
+      "galleryImages": [
+        "https://www.ralphlaurenfragrances.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ralphlauren-us-Library/default/dw4b912b96/images/pdp/RLFE001/rl_frag_polo_blue_edt_25_ingredient_freshmelon_1x1.jpg?q=70&sfrm=jpg&sh=585&sm=cut&sw=585"
+      ],
+      "tags": [],
+      "notes": [
+        "Fresh Melon",
+        "Basil Verbena",
+        "Smooth Suede",
+        "Cucumber"
+      ],
+      "inspiredBy": "Ralph Lauren — Polo Blue Eau de Toilette",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:16.660Z",
+      "shippingMethods": [
+        {
+          "id": "0148e033-6889-412d-9e9f-fe160551718f",
+          "name": "20ml",
+          "price": "12",
+          "productId": "45289d4a-9c1a-4393-9f61-d4b566216ea7",
+          "createdAt": "2026-04-04T03:11:16.866Z",
+          "updatedAt": "2026-04-04T03:11:16.866Z"
+        },
+        {
+          "id": "9e24d0c3-a983-4198-b5c7-f4dfcad1c2f0",
+          "name": "50ml",
+          "price": "20",
+          "productId": "45289d4a-9c1a-4393-9f61-d4b566216ea7",
+          "createdAt": "2026-04-04T03:11:17.069Z",
+          "updatedAt": "2026-04-04T03:11:17.069Z"
+        },
+        {
+          "id": "93dfe617-8185-4d31-bac3-ccbd21e9dcaa",
+          "name": "100ml",
+          "price": "30",
+          "productId": "45289d4a-9c1a-4393-9f61-d4b566216ea7",
+          "createdAt": "2026-04-04T03:11:17.229Z",
+          "updatedAt": "2026-04-04T03:11:17.229Z"
+        }
+      ]
+    },
+    {
+      "id": "e08e008f-1695-44f6-9241-b1ea502aaf45",
+      "name": "YSL Y Eau de Parfum",
+      "description": "Fresh aromatic-woody “blue” style: crisp and clean herbs/florals on top, then smooth modern woods in the drydown.",
+      "price": "12",
+      "category": "Woody",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dwf3e109c7/pdp/images/727YSL/Y-EDP-Bottle.jpg?q=85&sh=840&sm=cut&sw=640",
+      "galleryImages": [
+        "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dwf2721bea/pdp/images/727YSL/Sage.jpg?q=85&sh=300&sm=cut&sw=300"
+      ],
+      "tags": [],
+      "notes": [
+        "Sage",
+        "Geranium",
+        "Sensual Woods"
+      ],
+      "inspiredBy": "Yves Saint Laurent — Y Eau de Parfum",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:14.025Z",
+      "shippingMethods": [
+        {
+          "id": "cfcfe258-94a6-4dd1-965d-403f714bb5fb",
+          "name": "20ml",
+          "price": "12",
+          "productId": "e08e008f-1695-44f6-9241-b1ea502aaf45",
+          "createdAt": "2026-04-04T03:11:14.127Z",
+          "updatedAt": "2026-04-04T03:11:14.127Z"
+        },
+        {
+          "id": "2a9e7a8d-edf6-42c6-b72d-ab2b8ad68275",
+          "name": "50ml",
+          "price": "20",
+          "productId": "e08e008f-1695-44f6-9241-b1ea502aaf45",
+          "createdAt": "2026-04-04T03:11:14.231Z",
+          "updatedAt": "2026-04-04T03:11:14.231Z"
+        },
+        {
+          "id": "3b2a3071-7dec-4d6e-8c56-8d5c2cab470a",
+          "name": "100ml",
+          "price": "30",
+          "productId": "e08e008f-1695-44f6-9241-b1ea502aaf45",
+          "createdAt": "2026-04-04T03:11:14.333Z",
+          "updatedAt": "2026-04-04T03:11:14.333Z"
+        }
+      ]
+    },
+    {
+      "id": "a48c2527-b7e1-46f2-b6eb-f9b14b8f1778",
+      "name": "YSL Y Le Parfum",
+      "description": "A dark, more intense Y with a fresh aromatic lift, then a rich woody-amber trail (pine/patchouli/fir style).",
+      "price": "12",
+      "category": "Oriental",
+      "genderCategory": "Man",
+      "concentration": null,
+      "gender": null,
+      "brand": "Bey Fragrance",
+      "mainImage": "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dw5a2b87a4/pdp/images/WW-507861YSL/Y%20LP%20About%20Image.jpg?q=85&sh=840&sm=cut&sw=640",
+      "galleryImages": [
+        "https://www.yslbeautyus.com/dw/image/v2/AANG_PRD/on/demandware.static/-/Sites-ysl-us-Library/default/dw0b537502/pdp/images/WW-507861YSL/2%20Y%20LP%20Pine%20Image.jpg?q=85&sh=300&sm=cut&sw=300"
+      ],
+      "tags": [],
+      "notes": [
+        "Fresh Geranium",
+        "Pine",
+        "Patchouli",
+        "Fir Balsam"
+      ],
+      "inspiredBy": "Yves Saint Laurent — Y Le Parfum",
+      "rating": "0",
+      "reviewCount": 0,
+      "stockQuantity": 100,
+      "sizes": [],
+      "createdAt": "2026-04-04T03:11:14.427Z",
+      "shippingMethods": [
+        {
+          "id": "b9734755-f881-463a-8658-c0fe46553c74",
+          "name": "20ml",
+          "price": "12",
+          "productId": "a48c2527-b7e1-46f2-b6eb-f9b14b8f1778",
+          "createdAt": "2026-04-04T03:11:14.527Z",
+          "updatedAt": "2026-04-04T03:11:14.527Z"
+        },
+        {
+          "id": "1e70643f-f07e-4a87-8b9a-d18ed0c34c50",
+          "name": "50ml",
+          "price": "20",
+          "productId": "a48c2527-b7e1-46f2-b6eb-f9b14b8f1778",
+          "createdAt": "2026-04-04T03:11:14.621Z",
+          "updatedAt": "2026-04-04T03:11:14.621Z"
+        },
+        {
+          "id": "7565c1d6-26ce-4db8-9399-bb3b9d3a444c",
+          "name": "100ml",
+          "price": "30",
+          "productId": "a48c2527-b7e1-46f2-b6eb-f9b14b8f1778",
+          "createdAt": "2026-04-04T03:11:14.712Z",
+          "updatedAt": "2026-04-04T03:11:14.712Z"
+        }
+      ]
+    }
+  ]
+}

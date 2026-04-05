@@ -1,0 +1,16 @@
+import "dotenv/config";
+import { defineConfig } from "prisma/config";
+
+// Confirms the .env is active
+console.log("Checking Database URL:", process.env.DATABASE_URL ? "FOUND" : "MISSING");
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  datasource: {
+    url: process.env.DATABASE_URL,
+    directUrl: process.env.DIRECT_URL,
+  },
+  migrations: {
+    seed: "npx tsx prisma/seed.ts",
+  },
+});

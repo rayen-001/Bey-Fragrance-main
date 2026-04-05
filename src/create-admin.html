@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 Create Admin - Hama Fragrance</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1510 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #d4af37, #f0c952);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+    }
+    
+    p {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    
+    .credentials {
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .credential-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+    }
+    
+    .label {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+    
+    .value {
+      color: #d4af37;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #d4af37, #f0c952);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .status {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 500;
+    }
+    
+    .status.success {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+    
+    .status.error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+    }
+    
+    .warning {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      color: #fbbf24;
+      font-size: 14px;
+    }
+    
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-left: 10px;
+    }
+    
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .loader {
+      border: 3px solid rgba(212, 175, 55, 0.1);
+      border-top: 3px solid #d4af37;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-right: 10px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Create Admin Account</h1>
+    <p>Click the button below to create your secure admin account for <strong>Hama Fragrance</strong>.</p>
+    
+    <div class="credentials">
+      <div class="credential-row">
+        <span class="label">Email:</span>
+        <div>
+          <span class="value" id="email">admin@hamafragrance.tn</span>
+          <button class="copy-btn" onclick="copyText('admin@hamafragrance.tn')">Copy</button>
+        </div>
+      </div>
+      <div class="credential-row">
+        <span class="label">Password:</span>
+        <div>
+          <span class="value" id="password">BeyAdmin$2026!StrongPass</span>
+          <button class="copy-btn" onclick="copyText('BeyAdmin$2026!StrongPass')">Copy</button>
+        </div>
+      </div>
+    </div>
+    
+    <button onclick="createAdmin()" id="createBtn">
+      🚀 Create Admin Account
+    </button>
+    
+    <div id="status"></div>
+    
+    <div class="warning">
+      ⚠️ <strong>Save these credentials!</strong> Store them in a secure password manager before closing this page.
+    </div>
+  </div>
+
+  <script>
+    const ADMIN_EMAIL = 'admin@hamafragrance.tn';
+    const ADMIN_PASSWORD = 'BeyAdmin$2026!StrongPass';
+    const ADMIN_NAME = 'Hama Fragrance Admin';
+    const API_URL = 'https://gagqlvffxjecrbzgvrnd.supabase.co/functions/v1/make-server-ee1fdf1a';
+    const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdhZ3FsdmZmeGplY3Jiemd2cm5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MTc0OTEsImV4cCI6MjA4NjM5MzQ5MX0.bV98izy2_WsToJEcut6fh9BggKxTQ1zskNccXgNJhDs';
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('✅ Copied to clipboard!');
+      });
+    }
+
+    async function createAdmin() {
+      const btn = document.getElementById('createBtn');
+      const status = document.getElementById('status');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<span class="loader"></span> Creating admin account...';
+      status.innerHTML = '';
+      
+      try {
+        const response = await fetch(`${API_URL}/auth/signup`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${API_KEY}`,
+          },
+          body: JSON.stringify({
+            email: ADMIN_EMAIL,
+            password: ADMIN_PASSWORD,
+            name: ADMIN_NAME,
+            isAdmin: true,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to create admin');
+        }
+
+        console.log('✅ Admin created:', data);
+        
+        status.className = 'status success';
+        status.innerHTML = `
+          ✅ <strong>Success!</strong><br/>
+          Admin account created successfully!<br/>
+          <small>User ID: ${data.user?.id || 'N/A'}</small><br/>
+          <br/>
+          <strong>You can now login with the credentials above.</strong>
+        `;
+        
+        btn.innerHTML = '✅ Admin Account Created';
+        btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+        
+      } catch (error) {
+        console.error('❌ Error:', error);
+        
+        status.className = 'status error';
+        
+        if (error.message.includes('already') || error.message.includes('exists')) {
+          status.innerHTML = `
+            ⚠️ <strong>Admin Already Exists</strong><br/>
+            The admin account has already been created.<br/>
+            <br/>
+            <strong>Use the credentials above to login.</strong>
+          `;
+          btn.innerHTML = '✅ Admin Already Created';
+          btn.style.background = 'linear-gradient(135deg, #fbbf24, #f59e0b)';
+        } else {
+          status.innerHTML = `
+            ❌ <strong>Error:</strong> ${error.message}<br/>
+            <br/>
+            <small>Check the browser console for more details.</small>
+          `;
+          btn.innerHTML = '🔄 Try Again';
+          btn.disabled = false;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+products, users, reviews, orders, favorites, order_items, cart_items, shipping_methods

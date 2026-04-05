@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// User model with local authentication support.
+model User {
+  id        String     @id @default(uuid()) @db.Uuid
+  email     String     @unique
+  password  String
+  fullName  String?    @map("full_name")
+  role      Role       @default(CUSTOMER)
+  phone     String?
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  cartItems CartItem[]
+  favorites Favorite[]
+  orders    Order[]
+  reviews   Review[]
+
+  @@map("users")
+}
+
+/// Luxury perfumes and products.
+model Product {
+  id              String           @id @default(uuid()) @db.Uuid
+  name            String
+  description     String?
+  price           Decimal          @db.Decimal(10, 2)
+  category        String?
+  concentration   String?
+  gender          String?
+  brand           String           @default("Bey Fragrance")
+  mainImage       String?          @map("main_image")
+  galleryImages   String[]         @map("gallery_images")
+  tags            String[]
+  notes           String[]         @map("notes")
+  inspiredBy      String?          @map("inspired_by")
+  rating          Decimal          @default(0) @db.Decimal(3, 2)
+  reviewCount     Int              @default(0) @map("review_count")
+  stockQuantity   Int              @default(0) @map("stock_quantity")
+  sizes           Json             @default("[]")
+  createdAt       DateTime         @default(now()) @map("created_at")
+  genderCategory  String?          @map("gender_category")
+  productType     String           @default("extrait_parfum") @map("product_type")
+  cartItems       CartItem[]
+  favorites       Favorite[]
+  orderItems      OrderItem[]
+  reviews         Review[]
+  shippingMethods ShippingMethod[]
+
+  @@unique([name, brand])
+  @@map("products")
+}
+
+model ShippingMethod {
+  id         String      @id @default(uuid()) @db.Uuid
+  name       String
+  price      Decimal     @db.Decimal(10, 2)
+  productId  String      @map("product_id") @db.Uuid
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAt  DateTime    @updatedAt @map("updated_at")
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+  product    Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("shipping_methods")
+}
+
+/// Customer orders.
+model Order {
+  id              String      @id @default(uuid()) @db.Uuid
+  userId          String?     @map("user_id") @db.Uuid
+  clientName      String      @map("client_name")
+  phoneNumber     String?     @map("phone_number")
+  shippingAddress String      @map("shipping_address")
+  status          String      @default("Pending")
+  totalAmount     Decimal     @map("total_amount") @db.Decimal(10, 2)
+  createdAt       DateTime    @default(now()) @map("created_at")
+  product         String?
+  quantity        Int?
+  deliveryMethod  String?     @map("delivery_method")
+  shippingFee     Decimal?    @map("shipping_fee") @db.Decimal(10, 2)
+  items           OrderItem[]
+  user            User?       @relation(fields: [userId], references: [id])
+
+  @@map("orders")
+}
+
+/// Order items for detailed breakdown.
+model OrderItem {
+  id               String          @id @default(uuid()) @db.Uuid
+  orderId          String          @map("order_id") @db.Uuid
+  productId        String          @map("product_id") @db.Uuid
+  quantity         Int
+  unitPrice        Decimal         @map("unit_price") @db.Decimal(10, 2)
+  shippingMethodId String?         @map("shipping_method_id") @db.Uuid
+  order            Order           @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product          Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  shippingMethod   ShippingMethod? @relation(fields: [shippingMethodId], references: [id])
+
+  @@map("order_items")
+}
+
+/// User favorite items.
+model Favorite {
+  id        String   @id @default(uuid()) @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@map("favorites")
+}
+
+/// User cart items.
+model CartItem {
+  id               String          @id @default(uuid()) @db.Uuid
+  userId           String          @map("user_id") @db.Uuid
+  productId        String          @map("product_id") @db.Uuid
+  quantity         Int             @default(1)
+  createdAt        DateTime        @default(now()) @map("created_at")
+  updatedAt        DateTime        @updatedAt @map("updated_at")
+  shippingMethodId String?         @map("shipping_method_id") @db.Uuid
+  product          Product         @relation(fields: [productId], references: [id], onDelete: Cascade)
+  shippingMethod   ShippingMethod? @relation(fields: [shippingMethodId], references: [id], onDelete: Cascade)
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId, shippingMethodId])
+  @@map("cart_items")
+}
+
+model Review {
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @map("product_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now()) @map("created_at")
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}
+
+enum Role {
+  ADMIN
+  CUSTOMER
+}

@@ -1,0 +1,28 @@
+﻿[dotenv@17.3.1] injecting env (9) from .env -- tip: ­ƒøá´©Å  run anywhere with `dotenvx run -- yourcommand`
+­ƒöù Initializing Prisma connection pool...
+--- PRODUCTS IN DB ---
+Product: YSL Y Elixir, Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+Product: YSL MYSLF Eau de Parfum, Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+Product: Ralph Lauren Polo Red (Eau de Toilette), Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+Product: Ralph Lauren Polo Blue (Eau de Toilette), Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+Product: YSL Y Eau de Parfum, Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+Product: YSL Y Le Parfum, Base Price: 22
+  Sizes JSON: []
+  - Relation Size: 50ml, Price: 22
+  - Relation Size: 100ml, Price: 32
+

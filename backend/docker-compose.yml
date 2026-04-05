@@ -1,0 +1,24 @@
+services:
+  app:
+    build: .
+    container_name: hama-hono-app
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "3001:3001"
+    environment:
+      # Supabase PostgreSQL — main database
+      DATABASE_URL: "postgresql://postgres.ttynzjozzzwhwmkysjov:Thugstools120%2App@aws-1-eu-north-1.pooler.supabase.com:6543/postgres?pgbouncer=true"
+      DIRECT_URL: "postgresql://postgres.ttynzjozzzwhwmkysjov:Thugstools120%2App@aws-1-eu-north-1.pooler.supabase.com:5432/postgres"
+      SUPABASE_URL: ${SUPABASE_URL}
+      VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+      VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+      SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      SUPABASE_PUBLIC_KEY: ${SUPABASE_PUBLIC_KEY}
+      NODE_ENV: development
+      PORT: 3001
+    volumes:
+      - .:/app
+      - /app/node_modules

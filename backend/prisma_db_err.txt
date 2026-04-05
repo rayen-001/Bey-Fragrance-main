@@ -1,0 +1,63 @@
+prisma:cli:bin Failed to initialize the command state: Error: ENOENT: no such file or directory, open 'C:\Users\asus\AppData\Roaming\prisma-nodejs\Config\commands.json' +482ms
+prisma:config:defineConfig [default]: '{\n  "loadedFromFile": null\n}' +292ms
+prisma:config:defineConfig [config.schema]: 'prisma/schema.prisma' +1ms
+prisma:config:defineConfig [config.datasource]: '{\n' +
+  '  "url": "postgresql://postgres.ttynzjozzzwhwmkysjov:Thugstools120%2App@aws-1-eu-north-1.pooler.supabase.com:5432/postgres"\n' +
+  '}' +0ms
+prisma:config:defineConfig [config.migrations]: '{\n  "seed": "npx tsx prisma/seed.ts"\n}' +0ms
+prisma:config:loadConfigFromFile Config file loaded in 36.03ms +0ms
+prisma:config:PrismaConfig Parsing PrismaConfigInternal: '{\n' +
+  '  "loadedFromFile": null,\n' +
+  '  "schema": "prisma/schema.prisma",\n' +
+  '  "datasource": {\n' +
+  '    "url": "postgresql://postgres.ttynzjozzzwhwmkysjov:Thugstools120%2App@aws-1-eu-north-1.pooler.supabase.com:5432/postgres"\n' +
+  '  },\n' +
+  '  "migrations": {\n' +
+  '    "seed": "npx tsx prisma/seed.ts"\n' +
+  '  }\n' +
+  '}' +1ms
+prisma:config:PrismaConfig Short-circuit: input is already a PrismaConfigInternal object +0ms
+Loaded Prisma config from prisma.config.ts.
+
+prisma:engines binaries to download schema-engine +517ms
+prisma:getSchema Reading schema from single file C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\prisma\schema.prisma +39ms
+prisma:getSchema Reading schema from single file C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\prisma\schema.prisma +0ms
+prisma:getConfig Using getConfig Wasm +7ms
+prisma:cli:checkpoint Error from tryToReadDataFromSchema() while processing the schema. This is not a fatal error. It will continue without the processed data. +9ms
+prisma:cli:checkpoint {
+  "name": "GetConfigError"
+} +0ms
+prisma:cli:checkpoint runCheckpointClientCheck(): Execution time for getting info: 18.00720000000001 ms +0ms
+prisma:cli:checkpoint runCheckpointClientCheck(): Execution time for "await checkpoint.check(data)": 6.784999999999968 ms +8ms
+prisma:getSchema Reading schema from single file C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\prisma\schema.prisma +2ms
+Prisma schema loaded from prisma\schema.prisma.
+prisma:getConfig Using getConfig Wasm +1ms
+Error: GetConfigError: Prisma schema validation - (get-config wasm)
+Error code: P1012
+error: The datasource property `url` is no longer supported in schema files. Move connection URLs for Migrate to `prisma.config.ts` and pass either `adapter` for a direct database connection or `accelerateUrl` for Accelerate to the `PrismaClient` constructor. See https://pris.ly/d/config-datasource and https://pris.ly/d/prisma7-client-config
+  -->  prisma\schema.prisma:7
+   | 
+ 6 |   provider = "postgresql"
+ 7 |   url      = env("DATABASE_URL")
+   | 
+
+
+error: The datasource property `directUrl` is no longer supported in schema files. Move connection URLs to `prisma.config.ts`. See https://pris.ly/d/config-datasource
+  -->  prisma\schema.prisma:8
+   | 
+ 7 |   url      = env("DATABASE_URL")
+ 8 |   directUrl = env("DIRECT_URL")
+   | 
+
+Validation Error Count: 2
+[Context: getConfig]
+
+Prisma CLI Version : 7.5.0
+    at C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:203:1073
+    at e.with (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:163:41043)
+    at hy (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:203:1043)
+    at HT (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:222:1318)
+    at Vn (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:222:1109)
+    at async e.parse (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:576:285)
+    at async e.parse (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:1060:2319)
+    at async Ior (C:\Users\asus\Desktop\projet\Bey-Fragrance-main\backend\node_modules\prisma\build\index.js:4651:136)

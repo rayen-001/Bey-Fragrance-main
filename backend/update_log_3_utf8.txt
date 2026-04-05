@@ -1,0 +1,9 @@
+﻿[dotenv@17.3.1] injecting env (9) from .env -- tip: ÔÜÖ´©Å  suppress all logs with { quiet: true }
+­ƒÜÇ Starting surgical DB update with corrected table names...
+­ƒöù Initializing Prisma connection pool...
+Ô£à Deleted 6 occurrences of 20ml shipping methods.
+Ô£à Updated 6 occurrences of 50ml prices to 22.
+Ô£à Updated 6 occurrences of 100ml prices to 32.
+Ô£à Updated 6 products' base price to 22.
+­ƒÄë DB update complete!
+
