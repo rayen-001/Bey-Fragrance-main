@@ -123,7 +123,7 @@ auth.get('/is-admin', authMiddleware, async (c) => {
   const userMetadata = payload.user_metadata || {}
   const role = userMetadata.role || payload.role
   
-  const isAdmin = role === 'admin'
+  const isAdmin = role?.toUpperCase() === 'ADMIN'
   
   return c.json({
     isAdmin,
