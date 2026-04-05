@@ -330,17 +330,9 @@ export const authApi = {
     }
   },
 
-  // Check if user is admin
+  // Check if user is admin — always query backend DB (Supabase metadata doesn't have the role)
   isAdmin: async () => {
     try {
-      // First check Supabase session directly (fastest)
-      const { data: sessionData } = await supabase.auth.getSession();
-      const user = sessionData.session?.user;
-      if (user?.user_metadata?.role === 'admin') {
-        return { isAdmin: true, user: { id: user.id, email: user.email, role: 'admin' } };
-      }
-
-      // Then check API (more authoritative)
       const response = await fetch(`${API_BASE_URL}/auth/is-admin`, {
         headers: await getAuthHeaders(true),
       });

@@ -79,14 +79,10 @@ export default function App() {
 
     const handleAuthEvent = (event: string, session: any) => {
       console.log(`🔐 Auth Event [${event}]:`, session?.user?.email);
-      
+
       if (session) {
         const user = session.user;
-        const role = user.user_metadata?.role || user.app_metadata?.role;
-        const adminStatus = role === 'admin' || role === 'ADMIN';
-        
-        setIsAdmin(adminStatus);
-        
+
         // Populate local user state
         const uiUser: User = {
           id: user.id,
@@ -96,17 +92,23 @@ export default function App() {
           addresses: [],
           wishlist: []
         };
-        
+
         setCurrentUser(uiUser);
-        
+
         // Sync to localStorage for other components relying on it
         localStorage.setItem('hama_fragrance_current_user', JSON.stringify(uiUser));
-        if (adminStatus) {
-          localStorage.setItem('hama_fragrance_admin_session', JSON.stringify({
-            email: user.email,
-            loginTime: new Date().toISOString()
-          }));
-        }
+
+        // Always check admin status from backend DB (Supabase metadata doesn't have the role)
+        authApi.isAdmin().then((result) => {
+          const adminStatus = result.isAdmin === true;
+          setIsAdmin(adminStatus);
+          if (adminStatus) {
+            localStorage.setItem('hama_fragrance_admin_session', JSON.stringify({
+              email: user.email,
+              loginTime: new Date().toISOString()
+            }));
+          }
+        }).catch(() => setIsAdmin(false));
       } else {
         setIsAdmin(false);
         setCurrentUser(null);
@@ -275,9 +277,6 @@ export default function App() {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         const user = session.user;
-        const role = user.user_metadata?.role || user.app_metadata?.role;
-        const adminStatus = role === 'admin' || role === 'ADMIN';
-        setIsAdmin(adminStatus);
         const uiUser: User = {
           id: user.id,
           email: user.email || '',
@@ -290,10 +289,8 @@ export default function App() {
         localStorage.setItem('hama_fragrance_current_user', JSON.stringify(uiUser));
         console.log('✅ handleLoginSuccess: currentUser set from live Supabase session:', uiUser.id);
       } else {
-        // Fallback to localStorage if session not immediately available
         const user = getCurrentUser();
         setCurrentUser(user);
-        console.warn('⚠️ handleLoginSuccess: No live session found, using localStorage fallback');
       }
     } catch (err) {
       console.error('handleLoginSuccess error:', err);
