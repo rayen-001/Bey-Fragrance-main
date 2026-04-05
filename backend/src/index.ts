@@ -28,10 +28,12 @@ app.use('*', logger())
 const productionOrigins = (process.env.FRONTEND_URL || '').split(',').filter(Boolean)
 const allowedOrigins = [
   ...productionOrigins,
-  'http://localhost:8080', 
+  'https://bey-fragrance-main.vercel.app',
+  'https://bey-fragrance-main-production.up.railway.app',
   'http://localhost:5173',
-  'http://127.0.0.1:8080',
+  'http://localhost:8080',
   'http://127.0.0.1:5173',
+  'http://127.0.0.1:8080',
 ].filter(Boolean) as string[]
 
 app.use('*', cors({
