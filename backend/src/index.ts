@@ -28,8 +28,17 @@ const app = new Hono()
 app.use('*', logger())
 
 // Updated CORS to allow frontend communication and JWT headers
+const productionOrigins = (process.env.FRONTEND_URL || '').split(',').filter(Boolean)
+const allowedOrigins = [
+  ...productionOrigins,
+  'http://localhost:8080', 
+  'http://localhost:5173',
+  'http://127.0.0.1:8080',
+  'http://127.0.0.1:5173',
+].filter(Boolean) as string[]
+
 app.use('*', cors({
-  origin: ['http://localhost:8080', 'http://localhost:8081', 'http://localhost:5173', 'http://127.0.0.1:5173', 'http://127.0.0.1:8080', 'http://127.0.0.1:8081'],
+  origin: allowedOrigins,
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
   exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
