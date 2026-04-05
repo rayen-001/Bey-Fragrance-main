@@ -117,7 +117,13 @@ app.onError((err, c) => {
 
 // --- 5. Server Initialization ---
 const port = Number(process.env.PORT) || 8081
-console.log(`🚀 Server is running on http://localhost:${port}`)
+
+// Startup env check — helps diagnose missing Railway variables
+console.log('[ENV CHECK] DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'MISSING')
+console.log('[ENV CHECK] SUPABASE_URL:', process.env.SUPABASE_URL ? 'SET' : 'MISSING')
+console.log('[ENV CHECK] SUPABASE_SERVICE_ROLE_KEY:', process.env.SUPABASE_SERVICE_ROLE_KEY ? 'SET' : 'MISSING')
+
+console.log(`Server is running on http://localhost:${port}`)
 
 serve({
   fetch: app.fetch,
