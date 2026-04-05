@@ -120,17 +120,26 @@ import { authMiddleware } from '../middleware/auth'
 // GET /auth/is-admin: Check if current user is an admin
 auth.get('/is-admin', authMiddleware, async (c) => {
   const payload = c.get('jwtPayload') as any
-  const userMetadata = payload.user_metadata || {}
-  const role = userMetadata.role || payload.role
-  
-  const isAdmin = role?.toUpperCase() === 'ADMIN'
-  
+  const userId = payload.userId || payload.sub
+
+  // Always query the DB for the role — Supabase metadata may not have it
+  const dbUser = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true, email: true, role: true }
+  })
+
+  if (!dbUser) {
+    return c.json({ isAdmin: false, user: null })
+  }
+
+  const isAdmin = dbUser.role?.toUpperCase() === 'ADMIN'
+
   return c.json({
     isAdmin,
     user: {
-      id: payload.userId,
-      email: payload.email,
-      role: role
+      id: dbUser.id,
+      email: dbUser.email,
+      role: dbUser.role
     }
   })
 })
