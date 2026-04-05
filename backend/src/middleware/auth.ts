@@ -1,5 +1,6 @@
 import { Context, Next } from 'hono'
 import { getSupabase } from '../db/supabase'
+import { prisma } from '../db/prisma'
 
 /**
  * JWT Authentication & Role-Based Access Control Middleware using Supabase SDK.
@@ -24,8 +25,10 @@ export const authMiddleware = async (c: Context, next: Next) => {
       return c.json({ success: false, error: 'Invalid or expired session' }, 401)
     }
 
-    // 2. Populate payload for downstream use
-    const role = (user.app_metadata?.role || user.user_metadata?.role || 'customer').toLowerCase()
+    // 2. Get role from PostgreSQL (Supabase metadata does not have it)
+    const dbUser = await prisma.user.findUnique({ where: { id: user.id } })
+    const role = (dbUser?.role || 'CUSTOMER').toLowerCase()
+
     const payload = {
       userId: user.id,
       sub: user.id,
