@@ -400,7 +400,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12">
+      <div className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 sm:py-12 overflow-x-hidden">
         {/* Tabs */}
         <div className="flex mb-8 border-b border-white/10 overflow-x-auto no-scrollbar">
           <button
@@ -438,7 +438,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
         {/* ═══════════ Orders Tab ═══════════ */}
         {activeTab === 'orders' && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h2 className="text-3xl text-white mb-6 font-serif">Orders Management</h2>
+            <h2 className="text-xl sm:text-3xl text-white mb-6 font-serif">Orders Management</h2>
 
             {loadingOrders ? (
               <div className="bg-white/5 border border-white/10 rounded-sm p-12 text-center">
@@ -451,50 +451,61 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
               </div>
             ) : (
               <div className="bg-white/5 border border-white/10 rounded-sm">
-                <div className="overflow-x-auto w-full" style={{ WebkitOverflowScrolling: 'touch' }}>
-                <table className="min-w-[900px] w-full">
+                <div className="overflow-x-auto w-full max-w-full" style={{ WebkitOverflowScrolling: 'touch' }}>
+                <table className="min-w-[900px]" style={{ tableLayout: 'fixed', width: '900px' }}>
+                  <colgroup>
+                    <col style={{ width: '150px' }} />
+                    <col style={{ width: '120px' }} />
+                    <col style={{ width: '130px' }} />
+                    <col style={{ width: '200px' }} />
+                    <col style={{ width: '100px' }} />
+                    <col style={{ width: '100px' }} />
+                    <col style={{ width: '100px' }} />
+                  </colgroup>
                   <thead className="bg-white/5 border-b border-white/10">
                     <tr>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Client Name</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Details</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Place</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Products / Items</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Total</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Date</th>
-                      <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Status</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Client Name</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Details</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Place</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Products / Items</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Total</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Date</th>
+                      <th className="text-left px-4 py-4 text-white/70 text-sm font-normal">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {orders.map((order) => (
                       <tr key={order.id} className="border-b border-white/5 hover:bg-white/5 transition-colors align-top">
-                        <td className="px-6 py-4">
-                          <div className="text-white font-medium capitalize">{order.clientName}</div>
-                          <div className="text-[#d4af37] text-xs mt-1">{order.phoneNumber || 'No Phone'}</div>
+                        <td className="px-4 py-4">
+                          <div className="text-white font-medium capitalize truncate">{order.clientName}</div>
+                          <div className="text-[#d4af37] text-xs mt-1 truncate">{order.phoneNumber || 'No Phone'}</div>
                         </td>
-                        <td className="px-6 py-4">
-                          <div className="text-white/70 text-sm">{order.deliveryMethod || 'Standard'}</div>
+                        <td className="px-4 py-4">
+                          <div className="text-white/70 text-sm truncate">{order.deliveryMethod || 'Standard'}</div>
                           {order.shippingFee ? <div className="text-white/40 text-xs mt-1">Fee: {order.shippingFee} TND</div> : null}
                         </td>
-                        <td className="px-6 py-4 text-white/70 text-sm max-w-[200px] truncate">{order.place}</td>
-                        <td className="px-6 py-4">
+                        <td className="px-4 py-4">
+                          <div className="text-white/70 text-sm truncate">{order.place}</div>
+                        </td>
+                        <td className="px-4 py-4">
                           {order.items && order.items.length > 0 ? (
                             <div className="space-y-1">
                               {order.items.map((item, idx) => (
-                                <div key={idx} className="text-xs text-white flex justify-between gap-4">
-                                  <span>{item.name || 'Product'} ({item.size})</span>
-                                  <span className="text-[#d4af37]">x{item.quantity}</span>
+                                <div key={idx} className="text-xs text-white flex gap-2">
+                                  <span className="truncate">{item.name || 'Product'} ({item.size})</span>
+                                  <span className="text-[#d4af37] flex-shrink-0">x{item.quantity}</span>
                                 </div>
                               ))}
                             </div>
                           ) : (
-                            <div className="text-sm text-white">{order.product} (x{order.quantity})</div>
+                            <div className="text-sm text-white truncate">{order.product} (x{order.quantity})</div>
                           )}
                         </td>
-                        <td className="px-6 py-4 text-[#d4af37] font-bold whitespace-nowrap">{(order.totalPrice || 0).toFixed(2)} TND</td>
-                        <td className="px-6 py-4 text-white/70 text-sm whitespace-nowrap">
+                        <td className="px-4 py-4 text-[#d4af37] font-bold">{(order.totalPrice || 0).toFixed(2)} TND</td>
+                        <td className="px-4 py-4 text-white/70 text-sm">
                           {new Date(order.date).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-4 py-4">
                           <select
                             value={order.status}
                             onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value as any)}
