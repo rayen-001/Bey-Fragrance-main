@@ -40,8 +40,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
   const [showSearch, setShowSearch] = useState(false);
   const [apiProducts, setApiProducts] = useState<ApiProduct[]>([]);
   const [inspiredBySearch, setInspiredBySearch] = useState('');
-  const [detailModalProduct, setDetailModalProduct] = useState<ApiProduct | null>(null);
-  const [modalMode, setModalMode] = useState<'info' | 'purchase'>('info');
+  const [detailModal, setDetailModal] = useState<{ product: ApiProduct; mode: 'info' | 'purchase' } | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -337,8 +336,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                       onBuy={() => {
                         const fullProduct = apiProducts.find(p => p.id === product.id);
                         if (fullProduct) {
-                          setDetailModalProduct(fullProduct);
-                          setModalMode('purchase');
+                          setDetailModal({ product: fullProduct, mode: 'purchase' });
                         }
                       }}
                       onAddToCart={() => {
@@ -355,8 +353,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                       onViewInfo={() => {
                         const fullProduct = apiProducts.find(p => p.id === product.id);
                         if (fullProduct) {
-                          setDetailModalProduct(fullProduct);
-                          setModalMode('info');
+                          setDetailModal({ product: fullProduct, mode: 'info' });
                         }
                       }}
                     />
@@ -409,14 +406,14 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
         />
       )}
 
-      {detailModalProduct && (
+      {detailModal && (
         <ProductDetailModal
-          product={detailModalProduct}
-          isOpen={!!detailModalProduct}
-          onClose={() => setDetailModalProduct(null)}
+          product={detailModal.product}
+          isOpen={!!detailModal}
+          onClose={() => setDetailModal(null)}
           onAddToCart={onAddToCart}
           onBuy={onBuyProduct}
-          viewMode={modalMode}
+          viewMode={detailModal.mode}
         />
       )}
     </div>
