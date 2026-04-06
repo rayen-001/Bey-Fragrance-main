@@ -400,7 +400,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
         </div>
       </div>
 
-      <div className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 sm:py-12 overflow-x-hidden">
+      <div className="max-w-7xl w-full mx-auto px-3 sm:px-6 py-6 sm:py-12">
         {/* Tabs */}
         <div className="flex mb-8 border-b border-white/10 overflow-x-auto no-scrollbar">
           <button
@@ -451,8 +451,15 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
               </div>
             ) : (
               <div className="bg-white/5 border border-white/10 rounded-sm">
-                <div className="overflow-x-auto w-full max-w-full" style={{ WebkitOverflowScrolling: 'touch' }}>
-                <table className="min-w-[900px]" style={{ tableLayout: 'fixed', width: '900px' }}>
+                <div style={{
+                  width: '100%',
+                  maxWidth: '100%',
+                  overflowX: 'auto',
+                  overflowY: 'visible',
+                  WebkitOverflowScrolling: 'touch',
+                  minWidth: 0
+                }}>
+                <table style={{ minWidth: '900px', width: '100%', borderCollapse: 'collapse' }}>
                   <colgroup>
                     <col style={{ width: '150px' }} />
                     <col style={{ width: '120px' }} />
