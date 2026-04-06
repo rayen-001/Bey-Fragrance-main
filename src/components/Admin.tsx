@@ -450,9 +450,9 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                 <p className="text-white/50">No orders yet</p>
               </div>
             ) : (
-              <div className="bg-white/5 border border-white/10 rounded-sm overflow-hidden">
-                <div className="overflow-x-auto w-full">
-                <table className="min-w-[900px] w-full">
+              <div className="bg-white/5 border border-white/10 rounded-sm">
+                <div className="overflow-x-auto w-full" style={{ WebkitOverflowScrolling: 'touch' }}>
+                <table className="min-w-[1000px] w-full whitespace-nowrap">
                   <thead className="bg-white/5 border-b border-white/10">
                     <tr>
                       <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Client Name</th>
