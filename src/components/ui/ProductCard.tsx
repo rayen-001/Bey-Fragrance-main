@@ -98,12 +98,12 @@ export function ProductCard({
       </div>
 
       {/* Content */}
-      <div className="p-6 bg-black/40 flex flex-col flex-grow">
+      <div className="p-4 sm:p-6 bg-black/40 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2 min-h-[3.5rem]">
-          <h3 className="font-serif text-xl text-white group-hover:text-[#d4af37] transition-colors line-clamp-2 leading-tight flex-1">
+          <h3 className="font-serif text-base sm:text-xl font-semibold text-white group-hover:text-[#d4af37] transition-colors line-clamp-2 leading-tight flex-1">
             {name}
           </h3>
-          <span className="text-[#d4af37] font-medium whitespace-nowrap ml-4 pt-1">{price}</span>
+          <span className="text-[#d4af37] font-bold whitespace-nowrap ml-4 pt-1">{price}</span>
         </div>
         {inspiredBy && (
           <p className="text-[#d4af37] text-xs italic mb-2 -mt-1">Inspired by: {inspiredBy}</p>
@@ -143,7 +143,7 @@ export function ProductCard({
               e.stopPropagation();
               onBuy();
             }}
-            className="h-11 border-white/20 text-white hover:bg-white/10 flex items-center justify-center px-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm"
+            className="h-11 border-white/20 text-white hover:bg-white/10 flex items-center justify-center px-4 text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 rounded-sm"
           >
             Buy Now
           </Button>
@@ -154,7 +154,7 @@ export function ProductCard({
               e.stopPropagation();
               onAddToCart?.();
             }}
-            className="h-11 bg-gradient-to-r from-[#d4af37] to-[#f0c952] text-black border-none flex items-center justify-center px-4 font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#d4af37]/20 rounded-sm"
+            className="h-11 bg-gradient-to-r from-[#d4af37] to-[#f0c952] text-black border-none flex items-center justify-center px-4 font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg shadow-[#d4af37]/20 rounded-sm"
           >
             <ShoppingCart className="w-4 h-4 mr-1.5" />
             Add to Cart

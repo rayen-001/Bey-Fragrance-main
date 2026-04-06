@@ -135,7 +135,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen w-full bg-[#0a0a0a] overflow-x-hidden">
       <Navigation
         onNavigate={onNavigate}
         currentPage="shop"
@@ -149,8 +149,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
         onLogout={onLogout}
       />
 
-      <div className="pt-24 px-6 lg:px-12 py-16">
-        <div className="max-w-7xl mx-auto">
+      <div className="pt-24 px-4 sm:px-6 lg:px-12 py-16 w-full">
+        <div className="max-w-7xl mx-auto w-full">
           <header className="mb-12">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
@@ -197,7 +197,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
             <div className="mt-12 space-y-6">
               {/* Gender Filter */}
               <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Filter By Gender:</span>
+                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Filter By Gender:</span>
                 <div className="relative w-full max-w-full">
                 <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
                 <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar gap-2 w-max max-w-full">
@@ -219,29 +219,41 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
 
               {/* Fragrance Type Filter */}
               <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Fragrance Category:</span>
-                <div className="relative w-full max-w-full">
-                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
-                <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar w-max max-w-full gap-2">
+                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Fragrance Category:</span>
+                {/* Mobile: dropdown */}
+                <select
+                  className="md:hidden w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white text-xs font-bold uppercase tracking-widest focus:outline-none focus:border-[#d4af37]/50 appearance-none"
+                  value={activeFragrance}
+                  onChange={(e) => setActiveFragrance(e.target.value as FragranceTypeFilter)}
+                  style={{ backgroundColor: '#111' }}
+                >
                   {fragranceCategories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setActiveFragrance(cat)}
-                      className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
-                          ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                          : 'text-white/50 hover:text-white'
-                        }`}
-                    >
-                      {cat}
-                    </button>
+                    <option key={cat} value={cat}>{cat}</option>
                   ))}
-                </div>
+                </select>
+                {/* Desktop: pill bar */}
+                <div className="hidden md:block relative w-full max-w-full">
+                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
+                  <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar w-max max-w-full gap-2">
+                    {fragranceCategories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setActiveFragrance(cat)}
+                        className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
+                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                            : 'text-white/50 hover:text-white'
+                          }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
               {/* Product Type Filter */}
               <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Product Type:</span>
+                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Product Type:</span>
                 <div className="relative w-full max-w-full">
                 <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
                 <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar w-max max-w-full gap-2">
