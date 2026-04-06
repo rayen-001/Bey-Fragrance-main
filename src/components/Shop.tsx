@@ -329,6 +329,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                       notes={product.notes}
                       price={product.price}
                       image={product.image}
+                      images={product.images}
                       inspiredBy={product.inspiredBy}
                       rating={product.rating}
                       reviewCount={product.reviewCount}
