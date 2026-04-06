@@ -204,8 +204,8 @@ export default function Checkout({
           initial={{ opacity: 0, scale: 0.98, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
-          className="w-full max-w-5xl shadow-[0_0_100px_rgba(0,0,0,1)] relative flex flex-col md:flex-row overflow-hidden min-h-[600px] max-h-[92vh] z-[2147483647] border border-[#d4af37]/30"
-          style={{ backgroundColor: '#050505' }}
+          className="w-full max-w-5xl shadow-[0_0_100px_rgba(0,0,0,1)] relative flex flex-col md:flex-row overflow-y-auto md:overflow-hidden min-h-0 md:min-h-[600px] max-h-[92vh] z-[2147483647] border border-[#d4af37]/30"
+          style={{ backgroundColor: '#050505', WebkitOverflowScrolling: 'touch' }}
         >
           {isSuccess ? (
             <div className="w-full h-full flex flex-col items-center justify-center p-12 text-center" style={{ backgroundColor: '#050505' }}>
@@ -234,7 +234,7 @@ export default function Checkout({
             <>
           {/* Left Panel: Information */}
           <div 
-            className="flex-[1.2] p-10 lg:p-16 border-b md:border-b-0 md:border-r border-[#d4af37]/10 overflow-y-auto custom-scrollbar relative z-20"
+            className="flex-[1.2] p-6 md:p-10 lg:p-16 border-b md:border-b-0 md:border-r border-[#d4af37]/10 md:overflow-y-auto custom-scrollbar relative z-20"
             style={{ backgroundColor: '#080808', opacity: 1 }}
           >
             <header className="mb-14">
@@ -356,7 +356,7 @@ export default function Checkout({
 
           {/* Right Panel: Summary */}
           <div 
-            className="flex-1 p-10 lg:p-16 overflow-y-auto custom-scrollbar relative z-20 flex flex-col"
+            className="flex-1 p-6 md:p-10 lg:p-16 md:overflow-y-auto custom-scrollbar relative z-20 flex flex-col"
             style={{ backgroundColor: '#050505', opacity: 1 }}
           >
             <h2 className="font-serif text-3xl text-white mb-10 tracking-tight">Selection Summary</h2>
