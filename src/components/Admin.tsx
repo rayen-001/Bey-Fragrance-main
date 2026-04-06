@@ -593,7 +593,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                         value={newProduct.name}
                         onChange={(e) => setNewProduct({ ...newProduct, name: e.target.value })}
                         className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
-                        placeholder="e.g., Bey Mystique"
+                        placeholder="e.g., Hama Mystique"
                       />
                     </div>
                     

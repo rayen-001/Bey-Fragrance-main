@@ -26,7 +26,7 @@ export const FRAGRANCE_SIZES = [
 
 const PROMO_CODES = {
   'WELCOME10': 0.10,
-  'BEY20': 0.20,
+  'HAMA20': 0.20,
   'LUXURY15': 0.15,
 };
 

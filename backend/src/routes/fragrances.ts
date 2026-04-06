@@ -118,7 +118,7 @@ fragrances.get('/:id', async (c) => {
 
     // Check for user_rating
     const authHeader = c.req.header('Authorization')
-    let user_rating = null
+    let user_rating: number | null = null
     if (authHeader?.startsWith('Bearer ')) {
       const token = authHeader.split(' ')[1]
       try {
@@ -225,7 +225,7 @@ const fragranceSchema = z.object({
   genderCategory: z.string().optional(),
   concentration: z.string().optional(),
   gender: z.string().optional(),
-  brand: z.string().default('Bey Fragrance'),
+  brand: z.string().default('Hama Fragrance'),
   mainImage: z.string().url().nullable().optional(),
   galleryImages: z.array(z.string()).optional(),
   tags: z.array(z.string()).optional(),

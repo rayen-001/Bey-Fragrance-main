@@ -115,7 +115,7 @@ export default function AdminLogin({ onLoginSuccess, onBack }: AdminLoginProps) 
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder="admin@hamafragrance.tn"
+                placeholder="admin@hamafragrance.com"
                 className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white placeholder-white/30 focus:outline-none focus:border-[#d4af37]/50 transition-colors"
               />
             </div>

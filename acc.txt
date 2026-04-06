@@ -1,6 +1,5 @@
-jahouda05@gmail.com
-Admintest123
+📧 Email: admin@hamafragrance.com
+🔑 Password: Hama@Fragrance&2026#Secure!
 
 
-📧 Email: admin@beyfragrance.com
-🔑 Password: admin1234
+JWT Secure   :mySecretKey123456

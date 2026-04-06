@@ -35,7 +35,7 @@ model Product {
   category        String?
   concentration   String?
   gender          String?
-  brand           String           @default("Bey Fragrance")
+  brand           String           @default("Hama Fragrance")
   mainImage       String?          @map("main_image")
   galleryImages   String[]         @map("gallery_images")
   tags            String[]
