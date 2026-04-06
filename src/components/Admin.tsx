@@ -580,7 +580,14 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                       <label className="text-white/70 text-sm mb-2 block">Product Type *</label>
                       <select
                         value={newProduct.productType}
-                        onChange={(e) => setNewProduct({ ...newProduct, productType: e.target.value as any })}
+                        onChange={(e) => {
+                          const pt = e.target.value as any;
+                          setNewProduct({
+                            ...newProduct,
+                            productType: pt,
+                            ...(pt === 'accessoire' ? { category: '', genderCategory: 'unisex' as any } : {})
+                          });
+                        }}
                         className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
                         required
                       >

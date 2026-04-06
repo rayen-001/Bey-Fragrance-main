@@ -121,14 +121,18 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
                 {product.name}
               </h2>
 
-              <div className="flex gap-3 mb-6">
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-[#d4af37] uppercase tracking-widest">
-                  {product.genderCategory || 'Unisex'}
-                </span>
-                <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-white/60 uppercase tracking-widest">
-                  {product.category || 'Fresh'}
-                </span>
-              </div>
+              {product.productType !== 'accessoire' && (
+                <div className="flex gap-3 mb-6">
+                  <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-[#d4af37] uppercase tracking-widest">
+                    {product.genderCategory || 'Unisex'}
+                  </span>
+                  {product.category && (
+                    <span className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-white/60 uppercase tracking-widest">
+                      {product.category}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* 3D Star Rating + Price Row */}
               <div className="flex justify-between items-center py-4 border-y border-white/5">
