@@ -195,71 +195,117 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
 
             {/* Filter Section */}
             <div className="mt-12 space-y-6">
-              {/* Gender Filter */}
-              <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Filter By Gender:</span>
-                <div className="relative w-full overflow-x-auto no-scrollbar">
-                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
-                  <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
+
+              {/* ── MOBILE FILTERS (< md) ── */}
+              <div className="md:hidden grid grid-cols-1 gap-4">
+                {/* Gender */}
+                <div>
+                  <span className="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-bold mb-2 block">Filter By Gender</span>
+                  <select
+                    value={activeGender}
+                    onChange={(e) => setActiveGender(e.target.value as GenderFilter)}
+                    className="w-full bg-[#1a1a1a] border border-[#d4af37]/30 rounded-sm px-4 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#d4af37]"
+                  >
                     {genderCategories.map((cat) => (
-                      <button
-                        key={cat}
-                        onClick={() => setActiveGender(cat)}
-                        className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeGender === cat
-                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                            : 'text-white/50 hover:text-white'
-                          }`}
-                      >
-                        {cat}
-                      </button>
+                      <option key={cat} value={cat}>{cat}</option>
                     ))}
-                  </div>
+                  </select>
                 </div>
-              </div>
-
-              {/* Fragrance Type Filter */}
-              <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Fragrance Category:</span>
-                <div className="relative w-full overflow-x-auto no-scrollbar">
-                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
-                  <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
+                {/* Fragrance Category */}
+                <div>
+                  <span className="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-bold mb-2 block">Fragrance Category</span>
+                  <select
+                    value={activeFragrance}
+                    onChange={(e) => setActiveFragrance(e.target.value as FragranceTypeFilter)}
+                    className="w-full bg-[#1a1a1a] border border-[#d4af37]/30 rounded-sm px-4 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#d4af37]"
+                  >
                     {fragranceCategories.map((cat) => (
-                      <button
-                        key={cat}
-                        onClick={() => setActiveFragrance(cat)}
-                        className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
-                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                            : 'text-white/50 hover:text-white'
-                          }`}
-                      >
-                        {cat}
-                      </button>
+                      <option key={cat} value={cat}>{cat}</option>
                     ))}
+                  </select>
+                </div>
+                {/* Product Type */}
+                <div>
+                  <span className="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-bold mb-2 block">Product Type</span>
+                  <select
+                    value={activeProductType}
+                    onChange={(e) => setActiveProductType(e.target.value as ProductTypeFilter)}
+                    className="w-full bg-[#1a1a1a] border border-[#d4af37]/30 rounded-sm px-4 py-3 text-white text-sm appearance-none focus:outline-none focus:border-[#d4af37]"
+                  >
+                    {productTypeCategories.map((cat) => (
+                      <option key={cat.value} value={cat.value}>{cat.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              {/* ── DESKTOP FILTERS (≥ md) ── */}
+              <div className="hidden md:flex flex-col gap-6">
+                {/* Gender */}
+                <div className="flex flex-col items-start gap-3">
+                  <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Filter By Gender:</span>
+                  <div className="relative w-full overflow-x-auto no-scrollbar">
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+                    <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
+                      {genderCategories.map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => setActiveGender(cat)}
+                          className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeGender === cat
+                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                              : 'text-white/50 hover:text-white'
+                            }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* Fragrance Category */}
+                <div className="flex flex-col items-start gap-3">
+                  <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Fragrance Category:</span>
+                  <div className="relative w-full overflow-x-auto no-scrollbar">
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+                    <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
+                      {fragranceCategories.map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => setActiveFragrance(cat)}
+                          className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
+                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                              : 'text-white/50 hover:text-white'
+                            }`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* Product Type */}
+                <div className="flex flex-col items-start gap-3">
+                  <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Product Type:</span>
+                  <div className="relative w-full overflow-x-auto no-scrollbar">
+                    <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+                    <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
+                      {productTypeCategories.map((cat) => (
+                        <button
+                          key={cat.value}
+                          onClick={() => setActiveProductType(cat.value)}
+                          className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeProductType === cat.value
+                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                              : 'text-white/50 hover:text-white'
+                            }`}
+                        >
+                          {cat.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Product Type Filter */}
-              <div className="flex flex-col items-start gap-3">
-                <span className="text-white/30 text-xs uppercase tracking-[0.3em] font-bold">Product Type:</span>
-                <div className="relative w-full overflow-x-auto no-scrollbar">
-                  <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10" />
-                  <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 gap-2 w-max">
-                    {productTypeCategories.map((cat) => (
-                      <button
-                        key={cat.value}
-                        onClick={() => setActiveProductType(cat.value)}
-                        className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeProductType === cat.value
-                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                            : 'text-white/50 hover:text-white'
-                          }`}
-                      >
-                        {cat.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
           </header>
 
