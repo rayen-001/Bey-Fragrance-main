@@ -60,8 +60,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-[#050505] border border-[#d4af37]/20 rounded-2xl w-full max-w-6xl shadow-2xl relative flex flex-col md:flex-row max-h-[90vh] overflow-y-auto"
-          style={{ WebkitOverflowScrolling: 'touch' }}
+          className="bg-[#050505] border border-[#d4af37]/20 rounded-2xl w-full max-w-6xl shadow-2xl relative flex flex-col md:flex-row max-h-[90vh] overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Exit Button */}
@@ -77,7 +76,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
           </button>
 
           {/* Left Side: Gallery */}
-          <div className="w-full md:w-1/2 relative bg-[#0a0a0a] min-h-[400px] md:h-auto overflow-hidden border-r border-white/5 group">
+          <div className="w-full md:w-1/2 relative bg-[#0a0a0a] min-h-[240px] md:min-h-0 md:h-auto overflow-hidden border-r border-white/5 group flex-shrink-0">
              <div className="absolute inset-0 p-8 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                    <motion.img
@@ -122,7 +121,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
           </div>
 
           {/* Right Side: Info */}
-          <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto custom-scrollbar flex flex-col bg-[#050505] text-white">
+          <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto custom-scrollbar flex flex-col bg-[#050505] text-white flex-1 min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
             <div className="mb-8">
               <span className="text-[#d4af37] text-[10px] uppercase font-bold tracking-[0.4em] mb-2 block">
                 {product.brand}

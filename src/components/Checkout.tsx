@@ -193,20 +193,36 @@ export default function Checkout({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 flex items-center justify-center p-4 md:p-6"
-        style={{ zIndex: 2147483647 }}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 2147483647,
+          background: 'rgba(0,0,0,0.95)',
+          overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch' as any,
+        }}
       >
-        {/* Physical Blocking Shield (Absolute Opacity) */}
-        <div className="fixed inset-0 w-full h-full" style={{ backgroundColor: '#000000', opacity: 1, zIndex: -1 }} />
-        
+        <div style={{ minHeight: '100%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '16px' }}>
         <motion.div
           key="checkout-card"
           initial={{ opacity: 0, scale: 0.98, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 10 }}
-          className="w-full max-w-5xl shadow-[0_0_100px_rgba(0,0,0,1)] relative flex flex-col md:flex-row overflow-y-auto md:overflow-hidden min-h-0 md:min-h-[600px] max-h-[92vh] z-[2147483647] border border-[#d4af37]/30"
-          style={{ backgroundColor: '#050505', WebkitOverflowScrolling: 'touch' }}
+          className="w-full max-w-5xl shadow-[0_0_100px_rgba(0,0,0,1)] relative flex flex-col md:flex-row border border-[#d4af37]/30 my-8"
+          style={{ backgroundColor: '#050505' }}
         >
+          {/* X close button */}
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute', top: '16px', right: '16px', zIndex: 9999,
+              background: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '8px',
+              color: 'white', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+              lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <X size={16} />
+          </button>
           {isSuccess ? (
             <div className="w-full h-full flex flex-col items-center justify-center p-12 text-center" style={{ backgroundColor: '#050505' }}>
               <motion.div 
@@ -444,6 +460,7 @@ export default function Checkout({
           </>
         )}
         </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );

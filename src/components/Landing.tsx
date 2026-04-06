@@ -4,9 +4,10 @@ import { Navigation } from './ui/Navigation';
 import { Button } from './ui/button';
 import { Footer } from './ui/Footer';
 import { ProductCard } from './ui/ProductCard';
+import { ProductDetailModal } from './ProductDetailModal';
 import { type Product } from '../lib/products';
 import { getFragrances } from '../lib/api';
-import { type Product as ApiProduct } from '../types';
+import { type Product as ApiProduct } from '../types/index';
 import logoImage from 'figma:asset/fcafee10bea948a581eab1432c896c711480b206.png';
 
 interface LandingProps {
@@ -27,13 +28,24 @@ interface LandingProps {
 export default function Landing({ onNavigate, cartItemsCount, onCartOpen, currentUser, onLoginClick, onAccountClick, onLogout, isAdmin, onAdminClick, wishlistItems = [], onToggleWishlist, onAddToCart }: LandingProps) {
   const [featured, setFeatured] = useState<ApiProduct[]>([]);
   const [totalFragrances, setTotalFragrances] = useState<number>(283);
+  const [viewingProduct, setViewingProduct] = useState<ApiProduct | null>(null);
 
   useEffect(() => {
     const fetchFeatured = async () => {
       try {
         const data = await getFragrances();
         setTotalFragrances(data.length);
-        setFeatured(data.slice(0, 3));
+        // Sort by rating descending, pick top 3
+        const sorted = [...data].sort((a, b) => (Number(b.rating) || 0) - (Number(a.rating) || 0));
+        const topRating = Number(sorted[0]?.rating) || 0;
+        const topGroup = sorted.filter(p => Number(p.rating) === topRating);
+        if (topGroup.length > 3) {
+          // Shuffle and pick 3 from top-rated group
+          const shuffled = topGroup.sort(() => Math.random() - 0.5);
+          setFeatured(shuffled.slice(0, 3));
+        } else {
+          setFeatured(sorted.slice(0, 3));
+        }
       } catch (err) {
         console.error('Failed to fetch featured fragrances', err);
       }
@@ -405,10 +417,12 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <ProductCard
+                  productId={p.id}
                   name={p.name}
                   notes={p.notes && p.notes.join(', ')}
                   price={p.price.toString() + ' TND'}
                   image={p.mainImage || ''}
+                  images={p.galleryImages || []}
                   rating={Number(p.rating) || 0}
                   reviewCount={p.reviewCount || 0}
                   isFavorited={wishlistItems.some(item => item.id === p.id)}
@@ -435,6 +449,7 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
                     } as Product;
                     onToggleWishlist?.(product);
                   }}
+                  onViewInfo={() => setViewingProduct(p)}
                 />
               </motion.div>
             ))}
@@ -449,6 +464,27 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
       )}
 
       <Footer />
+
+      {viewingProduct && (
+        <ProductDetailModal
+          product={viewingProduct}
+          isOpen={!!viewingProduct}
+          onClose={() => setViewingProduct(null)}
+          onAddToCart={(product, selectedSize) => {
+            const p = {
+              id: product.id,
+              name: product.name,
+              price: selectedSize ? String(selectedSize.price) + ' TND' : (String(product.price) || '22 TND'),
+              image: product.mainImage || '',
+              notes: (product.notes && product.notes.join(', ')) || '',
+              category: (product.category as any) || 'Fresh',
+            } as Product;
+            onAddToCart?.(p);
+          }}
+          onBuy={() => onNavigate('shop')}
+          viewMode="purchase"
+        />
+      )}
     </div>
   );
 }
