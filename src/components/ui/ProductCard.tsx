@@ -68,7 +68,7 @@ export function ProductCard({
               e.stopPropagation();
               onViewInfo();
             }}
-            className="absolute top-4 left-4 z-20 p-3 rounded-sm border backdrop-blur-md bg-black/70 border-white/10 text-white hover:border-[#d4af37]/50 hover:text-[#d4af37] transition-all duration-300"
+            className="absolute top-4 left-4 z-20 text-white drop-shadow-lg hover:text-[#d4af37] transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -84,10 +84,10 @@ export function ProductCard({
               e.stopPropagation();
               onToggleWishlist();
             }}
-            className={`absolute top-4 right-4 z-20 p-3 rounded-sm border backdrop-blur-md transition-all duration-300 ${
-              isFavorited 
-                ? 'bg-[#d4af37] border-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.4)]' 
-                : 'bg-black/70 border-white/10 text-white hover:border-[#d4af37]/50 hover:text-[#d4af37]'
+            className={`absolute top-4 right-4 z-20 drop-shadow-lg transition-colors ${
+              isFavorited
+                ? 'text-[#d4af37]'
+                : 'text-white hover:text-[#d4af37]'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -106,7 +106,7 @@ export function ProductCard({
           <span className="text-[#d4af37] font-bold whitespace-nowrap ml-4 pt-1">{price}</span>
         </div>
         {inspiredBy && (
-          <p className="text-[#d4af37] text-xs italic mb-2 -mt-1">Inspired by: {inspiredBy}</p>
+          <p className="text-[#d4af37]/70 text-[10px] italic mb-2 -mt-1">Inspired by: {inspiredBy}</p>
         )}
         
         {/* Rating Row (Now moved below the name for better readability as requested) */}

@@ -172,11 +172,11 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
 
               <div className="flex flex-col gap-4">
                 {/* Search Bar */}
-                <div className="relative group w-full md:w-80">
+                <div className="relative group w-full min-w-[200px] md:w-72">
                   <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 group-focus-within:text-[#d4af37] transition-colors" size={18} />
                   <input
                     type="text"
-                    placeholder="Search by name, brand or scent..."
+                    placeholder="Search collection..."
                     value={inspiredBySearch}
                     onChange={(e) => setInspiredBySearch(e.target.value)}
                     className="w-full bg-white/5 border border-white/10 rounded-sm py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#d4af37]/50 transition-all placeholder:text-white/20 text-sm"
@@ -253,7 +253,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           onClick={() => setActiveGender(cat)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeGender === cat
                               ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/50 hover:text-white'
+                              : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat}
@@ -274,7 +274,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           onClick={() => setActiveFragrance(cat)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
                               ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/50 hover:text-white'
+                              : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat}
@@ -295,7 +295,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           onClick={() => setActiveProductType(cat.value)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeProductType === cat.value
                               ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/50 hover:text-white'
+                              : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat.label}

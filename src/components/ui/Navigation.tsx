@@ -93,7 +93,7 @@ export function Navigation({
             {isAdmin && (
               <button
                 onClick={onAdminClick}
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d4af37] to-[#f0c952] text-black text-sm font-medium rounded-sm hover:opacity-90 transition-opacity"
+                className="flex items-center gap-2 px-4 py-2 bg-[#C5A059] text-black text-sm font-medium rounded-sm hover:opacity-90 transition-opacity"
               >
                 <Shield size={16} />
                 Dashboard

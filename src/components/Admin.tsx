@@ -391,7 +391,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
             <Button variant="secondary" onClick={() => onNavigate('home')}>
               Back to Site
             </Button>
-            <Button variant="secondary" onClick={handleLogout}>
+            <Button variant="secondary" onClick={handleLogout} className="flex items-center gap-2">
               <LogOut size={20} />
               Logout
             </Button>
@@ -466,7 +466,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                     {orders.map((order) => (
                       <tr key={order.id} className="border-b border-white/5 hover:bg-white/5 transition-colors align-top">
                         <td className="px-6 py-4">
-                          <div className="text-white font-medium">{order.clientName}</div>
+                          <div className="text-white font-medium capitalize">{order.clientName}</div>
                           <div className="text-[#d4af37] text-xs mt-1">{order.phoneNumber || 'No Phone'}</div>
                         </td>
                         <td className="px-6 py-4">
@@ -496,7 +496,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                           <select
                             value={order.status}
                             onChange={(e) => handleUpdateOrderStatus(order.id, e.target.value as any)}
-                            className={`bg-transparent border border-white/20 rounded px-3 py-1 text-sm ${getStatusColor(order.status)} focus:outline-none focus:border-[#d4af37]/50`}
+                            className={`bg-transparent border border-white/20 rounded px-3 py-1 text-xs ${getStatusColor(order.status)} focus:outline-none focus:border-[#d4af37]/50`}
                           >
                             <option value="Pending">Pending</option>
                             <option value="Confirmed">Confirmed</option>
