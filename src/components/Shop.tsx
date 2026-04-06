@@ -165,6 +165,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
               {/* Gender Filter */}
               <div className="flex flex-col items-start gap-3">
                 <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Filter By Gender:</span>
+                <div className="relative w-full max-w-full">
+                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
                 <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar gap-2 w-max max-w-full">
                   {genderCategories.map((cat) => (
                     <button
@@ -179,11 +181,14 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                     </button>
                   ))}
                 </div>
+                </div>
               </div>
 
               {/* Fragrance Type Filter */}
               <div className="flex flex-col items-start gap-3">
                 <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Fragrance Category:</span>
+                <div className="relative w-full max-w-full">
+                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
                 <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar w-max max-w-full gap-2">
                   {fragranceCategories.map((cat) => (
                     <button
@@ -198,11 +203,14 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                     </button>
                   ))}
                 </div>
+                </div>
               </div>
 
               {/* Product Type Filter */}
               <div className="flex flex-col items-start gap-3">
                 <span className="text-white/30 text-[10px] uppercase tracking-[0.3em] font-bold">Product Type:</span>
+                <div className="relative w-full max-w-full">
+                <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#0a0a0a] to-transparent pointer-events-none z-10 rounded-r-sm" />
                 <div className="flex bg-white/5 p-1 rounded-sm border border-white/10 overflow-x-auto no-scrollbar w-max max-w-full gap-2">
                   {productTypeCategories.map((cat) => (
                     <button
@@ -216,6 +224,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                       {cat.label}
                     </button>
                   ))}
+                </div>
                 </div>
               </div>
             </div>

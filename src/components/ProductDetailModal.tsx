@@ -150,7 +150,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
             <div className="space-y-10 flex-grow">
               {isPurchaseMode && product.shippingMethods && product.shippingMethods.length > 0 && (
                 <section>
-                  <div className="text-[#d4af37] text-[8px] uppercase tracking-[0.4em] font-black mb-4">Select Bottle Size</div>
+                  <div className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-black mb-4">Select Bottle Size</div>
                   <div className="flex gap-3">
                     {product.shippingMethods.map((sm) => (
                       <button
@@ -170,14 +170,14 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
               )}
 
               <section>
-                <div className="text-[#d4af37] text-[8px] uppercase tracking-[0.4em] font-black mb-4">Description</div>
+                <div className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-black mb-4">Description</div>
                 <p className="text-white/80 leading-relaxed font-serif text-lg italic font-light">
                   {product.description || "A masterpiece fragrance."}
                 </p>
               </section>
 
               <section>
-                <div className="text-[#d4af37] text-[8px] uppercase tracking-[0.4em] font-black mb-4">Fragrance Notes</div>
+                <div className="text-[#d4af37] text-xs uppercase tracking-[0.4em] font-black mb-4">Fragrance Notes</div>
                 <div className="flex flex-wrap gap-2">
                   {product.notes.map((note, i) => (
                     <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-sm text-white/50 text-[9px] uppercase tracking-widest">
@@ -188,7 +188,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
               </section>
 
               <div className="py-2">
-                <h3 className="text-white/20 text-[8px] uppercase tracking-[0.3em] font-bold mb-2">Inspired By</h3>
+                <h3 className="text-white/20 text-xs uppercase tracking-[0.3em] font-bold mb-2">Inspired By</h3>
                 <p className="text-white text-[11px] font-bold uppercase tracking-widest">{product.inspiredBy || 'Original'}</p>
               </div>
             </div>

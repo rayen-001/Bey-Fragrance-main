@@ -143,7 +143,7 @@ export function ProductCard({
               e.stopPropagation();
               onBuy();
             }}
-            className="h-11 border-white/20 text-white hover:bg-white/10 flex items-center justify-center px-4 text-[10px] font-bold uppercase tracking-widest transition-all duration-300 rounded-sm"
+            className="h-11 border-white/20 text-white hover:bg-white/10 flex items-center justify-center px-4 text-xs font-bold uppercase tracking-widest transition-all duration-300 rounded-sm"
           >
             Buy Now
           </Button>
@@ -154,10 +154,10 @@ export function ProductCard({
               e.stopPropagation();
               onAddToCart?.();
             }}
-            className="h-11 bg-gradient-to-r from-[#d4af37] to-[#f0c952] text-black border-none flex items-center justify-center px-4 font-bold text-[10px] uppercase tracking-widest shadow-lg shadow-[#d4af37]/20 rounded-sm"
+            className="h-11 bg-gradient-to-r from-[#d4af37] to-[#f0c952] text-black border-none flex items-center justify-center px-4 font-bold text-xs uppercase tracking-widest shadow-lg shadow-[#d4af37]/20 rounded-sm"
           >
             <ShoppingCart className="w-4 h-4 mr-1.5" />
-            Add
+            Add to Cart
           </Button>
         </div>
       </div>

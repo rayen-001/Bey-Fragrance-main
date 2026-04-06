@@ -15,6 +15,7 @@ import { type Product } from './lib/products';
 import { getCurrentUser, logout, type User } from './lib/auth';
 import { isAdminLoggedInSync } from './lib/adminAuth';
 import { productsApi, ordersApi, authApi, getFragrances, supabase, cartApi, wishlistApi } from './lib/api';
+import { Toaster } from './components/ui/sonner';
 
 
 type Page = 'home' | 'story' | 'shop' | 'checkout' | 'admin' | 'account';
@@ -547,6 +548,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
+      <Toaster position="top-right" theme="dark" />
       <Routes>
         <Route path="/" element={
           <Landing 

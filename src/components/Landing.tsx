@@ -355,6 +355,30 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
       </div>
 
       {/* Featured Fragrances Section */}
+      {featured.length === 0 && (
+        <div className="w-full max-w-7xl mx-auto py-24 relative z-10">
+          <div className="text-center mb-16">
+            <div className="h-8 w-48 bg-white/5 rounded-sm mx-auto mb-4 animate-pulse" />
+            <div className="h-4 w-64 bg-white/5 rounded-sm mx-auto animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 lg:px-12">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white/5 border border-white/10 rounded-sm overflow-hidden animate-pulse">
+                <div className="h-80 bg-white/5" />
+                <div className="p-6 space-y-3">
+                  <div className="h-5 bg-white/5 rounded w-3/4" />
+                  <div className="h-4 bg-white/5 rounded w-1/2" />
+                  <div className="h-4 bg-white/5 rounded w-2/3" />
+                  <div className="grid grid-cols-2 gap-3 pt-3">
+                    <div className="h-11 bg-white/5 rounded-sm" />
+                    <div className="h-11 bg-[#d4af37]/10 rounded-sm" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {featured.length > 0 && (
         <div className="w-full max-w-7xl mx-auto py-24 relative z-10">
           <motion.div

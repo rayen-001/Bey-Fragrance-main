@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Plus, Minus, Trash2, ShoppingBag, ArrowRight, Tag, Truck, Heart, ShoppingCart, MapPin, User, Phone, ShieldCheck, ChevronLeft } from 'lucide-react';
 import { Button } from './ui/button';
@@ -118,7 +119,7 @@ export default function Cart({
     return subtotal * rate;
   }, [subtotal, appliedPromo]);
 
-  const shippingCost = 7; // Fixed 7 TND for all Tunisia
+  const shippingCost = 8; // Fixed 8 TND for all Tunisia
 
   const total = subtotal - discount + shippingCost;
 
@@ -142,15 +143,15 @@ export default function Cart({
   const handleSubmitOrder = async () => {
     // Basic validation
     if (!formData.clientName || !formData.phone || !formData.city || !formData.address) {
-      alert('Please fill in all details in the Shopping Formulair');
+      toast.error('Please fill in all required delivery details');
       return;
     }
 
     // Filter only checked items
     const selectedItems = items.filter(item => item.checked !== false);
-    
+
     if (selectedItems.length === 0) {
-      alert("Please select at least one item to checkout.");
+      toast.error('Please select at least one item to checkout.');
       return;
     }
 
@@ -227,7 +228,7 @@ export default function Cart({
                       </button>
                     )}
                     <h2 className="text-3xl font-serif text-white tracking-wider uppercase">
-                      {cartStep === 'cart' ? 'Your Selection' : 'Shopping Formulair'}
+                      {cartStep === 'cart' ? 'Your Selection' : 'Delivery Information'}
                     </h2>
                   </div>
                   <div className="h-0.5 w-12 bg-[#d4af37] mt-2 rounded-full" />
@@ -349,7 +350,7 @@ export default function Cart({
                                       <button
                                         key={size.id}
                                         onClick={() => onUpdateSize(item.id, size)}
-                                        className={`text-[9px] uppercase tracking-tighter px-2 py-1 rounded-md border transition-all ${
+                                        className={`text-sm uppercase tracking-tighter px-2 py-1 rounded-md border transition-all ${
                                           item.size === size.name
                                             ? 'bg-[#d4af37]/10 border-[#d4af37]/50 text-[#d4af37]'
                                             : 'border-white/5 text-white/30 hover:border-white/20 hover:text-white/60'
