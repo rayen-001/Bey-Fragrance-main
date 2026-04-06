@@ -379,7 +379,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
   const [newImageUrl, setNewImageUrl] = useState('');
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen w-full overflow-x-hidden bg-[#0a0a0a]">
       {/* Admin Header */}
       <div className="bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -450,7 +450,8 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
               </div>
             ) : (
               <div className="bg-white/5 border border-white/10 rounded-sm overflow-hidden">
-                <table className="w-full">
+                <div className="overflow-x-auto w-full">
+                <table className="min-w-[700px] w-full">
                   <thead className="bg-white/5 border-b border-white/10">
                     <tr>
                       <th className="text-left px-6 py-4 text-white/70 text-sm font-normal">Client Name</th>
@@ -507,6 +508,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                     ))}
                   </tbody>
                 </table>
+                </div>
               </div>
             )}
           </motion.div>
