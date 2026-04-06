@@ -89,7 +89,7 @@ export default function Login({ onClose, onLoginSuccess, onSwitchToSignUp, onAdm
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
           className="absolute top-4 right-4 p-2 text-white/50 hover:text-white transition-colors"
         >
           <X size={20} />

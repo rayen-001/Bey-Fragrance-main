@@ -53,7 +53,7 @@ export function ProductViewer3D({ product, onClose }: ProductViewer3DProps) {
       id: 'logo',
       x: 50,
       y: 55,
-      label: 'Bey Signature',
+      label: 'Hama Signature',
       description: 'Embossed logo with 24K gold leaf detailing'
     },
     {

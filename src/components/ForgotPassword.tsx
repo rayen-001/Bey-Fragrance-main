@@ -62,7 +62,7 @@ export default function ForgotPassword({ onClose, onBackToLogin }: ForgotPasswor
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
           className="absolute top-4 right-4 text-stone-400 hover:text-stone-600 transition-colors"
         >
           <X className="w-5 h-5" />

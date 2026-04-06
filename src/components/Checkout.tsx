@@ -213,7 +213,7 @@ export default function Checkout({
         >
           {/* X close button */}
           <button
-            onClick={onClose}
+            onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
             style={{
               position: 'absolute', top: '16px', right: '16px', zIndex: 9999,
               background: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '8px',

@@ -234,7 +234,7 @@ export default function Cart({
                   <div className="h-0.5 w-12 bg-[#d4af37] mt-2 rounded-full" />
                 </div>
                 <button
-                  onClick={onClose}
+                  onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
                   className="group p-3 text-white/50 hover:text-white transition-all bg-white/5 rounded-full hover:bg-white/10"
                 >
                   <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
