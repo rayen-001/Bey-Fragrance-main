@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react';
 import { type Product } from '../types';
@@ -23,6 +23,15 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [product.mainImage, ...(product.galleryImages || [])].filter(Boolean) as string[];
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const selectedSize = product.shippingMethods?.find(sm => sm.id === selectedSizeId);
@@ -43,15 +52,16 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 flex items-center justify-center p-4 md:p-12 transition-all"
-        style={{ zIndex: 9999999, position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0, 0, 0, 0.7)', backdropFilter: 'blur(8px)' }}
+        className="fixed inset-0 flex items-center justify-center p-4 md:p-12"
+        style={{ zIndex: 1000, background: 'rgba(0,0,0,0.92)' }}
         onClick={onClose}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="bg-[#050505] border border-[#d4af37]/20 rounded-2xl w-full max-w-6xl shadow-2xl relative flex flex-col md:flex-row max-h-[85vh] overflow-hidden"
+          className="bg-[#050505] border border-[#d4af37]/20 rounded-2xl w-full max-w-6xl shadow-2xl relative flex flex-col md:flex-row max-h-[90vh] overflow-y-auto"
+          style={{ WebkitOverflowScrolling: 'touch' }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Exit Button */}
