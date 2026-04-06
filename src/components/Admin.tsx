@@ -381,55 +381,56 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-[#0a0a0a]">
       {/* Admin Header */}
-      <div className="bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="font-serif text-2xl text-[#d4af37] mb-1">Hama Fragrance — Admin</h1>
-            <p className="text-white/50 text-sm">Dashboard & Management</p>
+      <div className="bg-black/80 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 min-w-0">
+          <div className="min-w-0">
+            <h1 className="font-serif text-lg sm:text-2xl text-[#d4af37] mb-0.5 truncate">Hama Fragrance — Admin</h1>
+            <p className="text-white/50 text-xs sm:text-sm hidden sm:block">Dashboard & Management</p>
           </div>
-          <div className="flex gap-4">
-            <Button variant="secondary" onClick={() => onNavigate('home')}>
-              Back to Site
+          <div className="flex gap-2 flex-shrink-0">
+            <Button variant="secondary" onClick={() => onNavigate('home')} className="text-xs sm:text-sm px-2 sm:px-4 py-1.5 sm:py-2">
+              <span className="hidden sm:inline">Back to Site</span>
+              <span className="sm:hidden">← Site</span>
             </Button>
-            <Button variant="secondary" onClick={handleLogout} className="flex items-center gap-2">
-              <LogOut size={20} />
-              Logout
+            <Button variant="secondary" onClick={handleLogout} className="flex items-center gap-1.5 text-xs sm:text-sm px-2 sm:px-4 py-1.5 sm:py-2">
+              <LogOut size={16} />
+              <span className="hidden sm:inline">Logout</span>
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-12">
         {/* Tabs */}
-        <div className="flex gap-4 mb-8 border-b border-white/10">
+        <div className="flex mb-8 border-b border-white/10 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTab('orders')}
-            className={`flex items-center gap-2 px-6 py-3 transition-all ${activeTab === 'orders'
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${activeTab === 'orders'
                 ? 'text-[#d4af37] border-b-2 border-[#d4af37]'
                 : 'text-white/50 hover:text-white/80'
               }`}
           >
-            <ShoppingBag size={20} />
+            <ShoppingBag size={16} className="flex-shrink-0" />
             Orders
           </button>
           <button
             onClick={() => setActiveTab('products')}
-            className={`flex items-center gap-2 px-6 py-3 transition-all ${activeTab === 'products'
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${activeTab === 'products'
                 ? 'text-[#d4af37] border-b-2 border-[#d4af37]'
                 : 'text-white/50 hover:text-white/80'
               }`}
           >
-            <Package size={20} />
+            <Package size={16} className="flex-shrink-0" />
             Products ({products.length})
           </button>
           <button
             onClick={() => setActiveTab('analytics')}
-            className={`flex items-center gap-2 px-6 py-3 transition-all ${activeTab === 'analytics'
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${activeTab === 'analytics'
                 ? 'text-[#d4af37] border-b-2 border-[#d4af37]'
                 : 'text-white/50 hover:text-white/80'
               }`}
           >
-            <BarChart3 size={20} />
+            <BarChart3 size={16} className="flex-shrink-0" />
             Analytics
           </button>
         </div>
