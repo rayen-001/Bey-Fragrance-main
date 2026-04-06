@@ -90,9 +90,14 @@ export default function Login({ onClose, onLoginSuccess, onSwitchToSignUp, onAdm
         {/* Close Button */}
         <button
           onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
-          className="absolute top-4 right-4 p-2 text-white/50 hover:text-white transition-colors"
+          style={{
+            position: 'absolute', top: '16px', right: '16px', zIndex: 99999,
+            background: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '8px',
+            color: 'white', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+            lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}
         >
-          <X size={20} />
+          <X size={16} />
         </button>
 
         {/* Header */}

@@ -65,13 +65,15 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
         >
           {/* Exit Button */}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
+            onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
+            style={{
+              position: 'absolute', top: '16px', right: '16px', zIndex: 99999,
+              background: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '8px',
+              color: 'white', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+              lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}
-            className="absolute top-4 right-4 z-[100000000] bg-black/40 hover:bg-[#d4af37] text-white hover:text-black p-1.5 rounded-full border border-white/10 transition-all cursor-pointer group"
           >
-            <X size={16} strokeWidth={2} />
+            <X size={16} />
           </button>
 
           {/* Left Side: Gallery */}

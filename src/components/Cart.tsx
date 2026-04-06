@@ -235,9 +235,14 @@ export default function Cart({
                 </div>
                 <button
                   onClick={(e) => { e.stopPropagation(); e.preventDefault(); onClose(); }}
-                  className="group p-3 text-white/50 hover:text-white transition-all bg-white/5 rounded-full hover:bg-white/10"
+                  style={{
+                    position: 'absolute', top: '16px', right: '16px', zIndex: 99999,
+                    background: 'rgba(0,0,0,0.6)', borderRadius: '50%', padding: '8px',
+                    color: 'white', border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
+                    lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}
                 >
-                  <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
+                  <X size={16} />
                 </button>
               </div>
 
