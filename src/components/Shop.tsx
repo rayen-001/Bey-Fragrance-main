@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navigation } from './ui/Navigation';
 import { ProductCard } from './ui/ProductCard';
@@ -78,6 +78,16 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
     };
   }) : initialProducts;
 
+  const PAGE_SIZE = 24;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  // Reset pagination whenever any filter changes
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [activeGender, activeFragrance, activeProductType, inspiredBySearch]);
+
   const filteredProducts = displayProducts.filter(p => {
     const matchGender = activeGender === 'All' ? true : (p as any).genderCategory?.toLowerCase() === activeGender.toLowerCase();
     const matchFragrance = activeFragrance === 'All' ? true : (p.category || '').toLowerCase() === activeFragrance.toLowerCase();
@@ -90,6 +100,29 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
     const matchType = activeProductType === 'All' ? true : p.productType === activeProductType;
     return matchGender && matchFragrance && matchSearch && matchType;
   });
+
+  const hasMore = visibleCount < filteredProducts.length;
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+  // IntersectionObserver: load next page when sentinel enters viewport
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !isLoadingMore) {
+          setIsLoadingMore(true);
+          setTimeout(() => {
+            setVisibleCount(c => c + PAGE_SIZE);
+            setIsLoadingMore(false);
+          }, 400);
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore, isLoadingMore]);
 
   const genderCategories: GenderFilter[] = ['All', 'Man', 'Woman', 'Unisex'];
   const fragranceCategories: FragranceTypeFilter[] = ['All', 'Aquatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
@@ -233,7 +266,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 items-stretch">
             <AnimatePresence mode="popLayout">
               {filteredProducts.length > 0 ? (
-                filteredProducts.map((product, index) => (
+                visibleProducts.map((product, index) => (
                   <motion.div
                     key={product.id}
                     className="flex flex-col flex-1 h-full"
@@ -295,6 +328,23 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
               )}
             </AnimatePresence>
           </div>
+
+          {/* Infinite scroll sentinel */}
+          <div ref={sentinelRef} className="h-1" />
+
+          {/* Loading spinner */}
+          {isLoadingMore && (
+            <div className="flex justify-center py-12">
+              <div className="w-8 h-8 border-2 border-[#d4af37]/30 border-t-[#d4af37] rounded-full animate-spin" />
+            </div>
+          )}
+
+          {/* End of list */}
+          {!hasMore && filteredProducts.length > 0 && (
+            <p className="text-center text-white/20 text-xs uppercase tracking-widest py-12">
+              — All products loaded —
+            </p>
+          )}
         </div>
       </div>
 
