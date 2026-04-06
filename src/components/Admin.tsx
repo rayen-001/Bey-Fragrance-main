@@ -590,32 +590,36 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                       </select>
                     </div>
 
-                    {/* Notes */}
-                    <div>
-                      <label className="text-white/70 text-sm mb-2 block">Notes / Ingredients (comma-separated) *</label>
-                      <input
-                        type="text"
-                        value={newProduct.notes}
-                        onChange={(e) => setNewProduct({ ...newProduct, notes: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
-                        placeholder="e.g., Oud, Leather, Dark Amber"
-                      />
-                    </div>
+                    {/* Notes — perfume only */}
+                    {newProduct.productType !== 'accessoire' && (
+                      <div>
+                        <label className="text-white/70 text-sm mb-2 block">Notes / Ingredients (comma-separated)</label>
+                        <input
+                          type="text"
+                          value={newProduct.notes}
+                          onChange={(e) => setNewProduct({ ...newProduct, notes: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
+                          placeholder="e.g., Oud, Leather, Dark Amber"
+                        />
+                      </div>
+                    )}
 
-                    {/* Inspired By */}
-                    <div>
-                      <label className="text-white/70 text-sm mb-2 block">Inspired By (designer fragrance)</label>
-                      <input
-                        type="text"
-                        value={newProduct.inspiredBy}
-                        onChange={(e) => setNewProduct({ ...newProduct, inspiredBy: e.target.value })}
-                        className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
-                        placeholder="e.g., Tom Ford Oud Wood"
-                      />
-                    </div>
+                    {/* Inspired By — perfume only */}
+                    {newProduct.productType !== 'accessoire' && (
+                      <div>
+                        <label className="text-white/70 text-sm mb-2 block">Inspired By (designer fragrance)</label>
+                        <input
+                          type="text"
+                          value={newProduct.inspiredBy}
+                          onChange={(e) => setNewProduct({ ...newProduct, inspiredBy: e.target.value })}
+                          className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
+                          placeholder="e.g., Tom Ford Oud Wood"
+                        />
+                      </div>
+                    )}
 
                     {/* Price & Category */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className={`grid grid-cols-1 gap-4 ${newProduct.productType !== 'accessoire' ? 'md:grid-cols-3' : 'md:grid-cols-1'}`}>
                       <div>
                         <label className="text-white/70 text-sm mb-2 block">Price (TND) *</label>
                         <input
@@ -626,37 +630,43 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                           placeholder="e.g., 650"
                         />
                       </div>
-                      <div>
-                        <label className="text-white/70 text-sm mb-2 block">Category *</label>
-                        <select
-                          value={newProduct.category}
-                          onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
-                          className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
-                        >
-                          <option value="Aquatic" className="bg-[#1a1a1a]">Aquatic</option>
-                          <option value="Citrus" className="bg-[#1a1a1a]">Citrus</option>
-                          <option value="Floral" className="bg-[#1a1a1a]">Floral</option>
-                          <option value="Fresh" className="bg-[#1a1a1a]">Fresh</option>
-                          <option value="Fruity" className="bg-[#1a1a1a]">Fruity</option>
-                          <option value="Musky" className="bg-[#1a1a1a]">Musky</option>
-                          <option value="Oriental" className="bg-[#1a1a1a]">Oriental</option>
-                          <option value="Spicy" className="bg-[#1a1a1a]">Spicy</option>
-                          <option value="Sweet" className="bg-[#1a1a1a]">Sweet</option>
-                          <option value="Woody" className="bg-[#1a1a1a]">Woody</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="text-white/70 text-sm mb-2 block">Gender *</label>
-                        <select
-                          value={newProduct.genderCategory}
-                          onChange={(e) => setNewProduct({ ...newProduct, genderCategory: e.target.value as any })}
-                          className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
-                        >
-                          <option value="unisex" className="bg-[#1a1a1a]">Unisex</option>
-                          <option value="woman" className="bg-[#1a1a1a]">Woman</option>
-                          <option value="man" className="bg-[#1a1a1a]">Man</option>
-                        </select>
-                      </div>
+                      {/* Category — perfume only */}
+                      {newProduct.productType !== 'accessoire' && (
+                        <div>
+                          <label className="text-white/70 text-sm mb-2 block">Category</label>
+                          <select
+                            value={newProduct.category}
+                            onChange={(e) => setNewProduct({ ...newProduct, category: e.target.value })}
+                            className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
+                          >
+                            <option value="Aquatic" className="bg-[#1a1a1a]">Aquatic</option>
+                            <option value="Citrus" className="bg-[#1a1a1a]">Citrus</option>
+                            <option value="Floral" className="bg-[#1a1a1a]">Floral</option>
+                            <option value="Fresh" className="bg-[#1a1a1a]">Fresh</option>
+                            <option value="Fruity" className="bg-[#1a1a1a]">Fruity</option>
+                            <option value="Musky" className="bg-[#1a1a1a]">Musky</option>
+                            <option value="Oriental" className="bg-[#1a1a1a]">Oriental</option>
+                            <option value="Spicy" className="bg-[#1a1a1a]">Spicy</option>
+                            <option value="Sweet" className="bg-[#1a1a1a]">Sweet</option>
+                            <option value="Woody" className="bg-[#1a1a1a]">Woody</option>
+                          </select>
+                        </div>
+                      )}
+                      {/* Gender — perfume only */}
+                      {newProduct.productType !== 'accessoire' && (
+                        <div>
+                          <label className="text-white/70 text-sm mb-2 block">Gender</label>
+                          <select
+                            value={newProduct.genderCategory}
+                            onChange={(e) => setNewProduct({ ...newProduct, genderCategory: e.target.value as any })}
+                            className="w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50"
+                          >
+                            <option value="unisex" className="bg-[#1a1a1a]">Unisex</option>
+                            <option value="woman" className="bg-[#1a1a1a]">Woman</option>
+                            <option value="man" className="bg-[#1a1a1a]">Man</option>
+                          </select>
+                        </div>
+                      )}
                     </div>
 
                     {/* Description */}
