@@ -263,7 +263,7 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
             <span className="text-[#d4af37]"> elegance</span>
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center px-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
             <Button variant="primary" onClick={() => onNavigate('shop')}>
               Shop Collection
             </Button>
