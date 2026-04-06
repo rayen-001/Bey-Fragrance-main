@@ -233,7 +233,7 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
 
         {/* Tagline */}
         <motion.div
-          className="text-center mb-48 relative z-10"
+          className="text-center mb-16 relative z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
@@ -329,20 +329,20 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
           </motion.div>
         ))}
 
-        {/* Bottom Features Bar */}
+        {/* Bottom Features Bar (In Flow for better mobile layout) */}
         <motion.div
-          className="absolute bottom-6 left-0 right-0 flex justify-center pb-safe"
+          className="relative mt-8 mb-4 sm:mt-12 w-full max-w-2xl px-4 pb-safe flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
         >
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 px-6 py-4 sm:py-6 bg-black/40 backdrop-blur-md border border-[#d4af37]/20 rounded-sm">
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 lg:gap-12 px-6 py-4 sm:py-6 bg-black/40 backdrop-blur-md border border-[#d4af37]/20 rounded-sm w-full sm:w-auto items-center sm:items-stretch">
             <motion.div
               className="text-center min-w-[100px]"
               whileHover={{ y: -5 }}
             >
               <p className="text-[#d4af37] font-serif text-xl sm:text-2xl mb-1">100%</p>
-              <p className="text-white/50 text-xs sm:text-sm font-display tracking-wider">AUTHENTIC</p>
+              <p className="text-white/50 text-[10px] sm:text-sm font-display tracking-wider">AUTHENTIC</p>
             </motion.div>
             <div className="hidden sm:block w-px bg-white/10" />
             <motion.div
@@ -350,7 +350,7 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
               whileHover={{ y: -5 }}
             >
               <p className="text-[#d4af37] font-serif text-xl sm:text-2xl mb-1">{totalFragrances}</p>
-              <p className="text-white/50 text-xs sm:text-sm font-display tracking-wider">FRAGRANCES</p>
+              <p className="text-white/50 text-[10px] sm:text-sm font-display tracking-wider">FRAGRANCES</p>
             </motion.div>
             <div className="hidden sm:block w-px bg-white/10" />
             <motion.div
@@ -358,7 +358,7 @@ export default function Landing({ onNavigate, cartItemsCount, onCartOpen, curren
               whileHover={{ y: -5 }}
             >
               <p className="text-[#d4af37] font-serif text-xl sm:text-2xl mb-1">Tunisia</p>
-              <p className="text-white/50 text-xs sm:text-sm font-display tracking-wider">HANDCRAFTED</p>
+              <p className="text-white/50 text-[10px] sm:text-sm font-display tracking-wider">HANDCRAFTED</p>
             </motion.div>
           </div>
         </motion.div>

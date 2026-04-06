@@ -153,7 +153,7 @@ export function ProductCard({
           <span className="text-[#d4af37] font-bold whitespace-nowrap ml-4 pt-1">{price}</span>
         </div>
         {inspiredBy && (
-          <p className="text-[#d4af37]/70 text-[10px] italic mb-2 -mt-1">Inspired by: {inspiredBy}</p>
+          <p className="text-[#d4af37] text-[10px] italic mb-2 -mt-1 font-medium">Inspired by: {inspiredBy}</p>
         )}
         
         {/* Rating Row (Now moved below the name for better readability as requested) */}
@@ -177,8 +177,8 @@ export function ProductCard({
           <div className="flex items-center gap-2 mb-1">
             <span className="text-white/40 text-xs uppercase tracking-widest font-light">Notes:</span>
           </div>
-          <div className="min-h-[1.25rem]">
-            <p className="text-white/80 text-sm line-clamp-1 italic font-light">{noteString || 'No notes available'}</p>
+          <div className="min-h-[1.5rem]">
+            <p className="text-white text-sm line-clamp-2 italic font-light">{noteString || 'No notes available'}</p>
           </div>
         </div>
 
