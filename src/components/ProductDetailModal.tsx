@@ -25,10 +25,20 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
 
   useEffect(() => {
     if (isOpen) {
+      // Lock both body and html to prevent double-scrolling issues on some browsers
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+      document.documentElement.style.overflow = 'hidden';
+      
+      // Prevent overscroll/bounce on some devices
+      document.body.style.position = 'relative';
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.position = '';
     };
   }, [isOpen]);
 
@@ -52,9 +62,11 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 flex items-center justify-center p-4 md:p-12"
-        style={{ zIndex: 1000, background: 'rgba(0,0,0,0.95)' }}
+        className="fixed inset-0 flex items-center justify-center p-4 md:p-12 overscroll-none touch-none"
+        style={{ zIndex: 1000, background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(8px)' }}
         onClick={onClose}
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -122,7 +134,11 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
           </div>
 
           {/* Right Side: Info (Now Bottom on all sizes) */}
-          <div className="w-full p-8 md:p-12 overflow-y-auto custom-scrollbar flex flex-col bg-[#050505] text-white flex-1 min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
+          <div 
+            className="w-full p-8 md:p-12 overflow-y-auto custom-scrollbar flex flex-col bg-[#050505] text-white flex-1 min-h-0 overscroll-contain" 
+            style={{ WebkitOverflowScrolling: 'touch' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="mb-8">
               <span className="text-[#d4af37] text-[10px] uppercase font-bold tracking-[0.4em] mb-2 block">
                 {product.brand}
