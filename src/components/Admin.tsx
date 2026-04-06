@@ -536,15 +536,16 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
         {/* ═══════════ Products Tab ═══════════ */}
         {activeTab === 'products' && (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl text-white font-serif">Products Management</h2>
+            <div className="flex items-center justify-between mb-6 gap-3 min-w-0">
+              <h2 className="text-xl sm:text-3xl text-white font-serif truncate">Products Management</h2>
               <Button
                 variant="primary"
                 onClick={() => setShowAddProduct(true)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5 px-3 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm flex-shrink-0"
               >
-                <Plus size={20} />
-                Add New Product
+                <Plus size={14} />
+                <span className="hidden sm:inline">Add New Product</span>
+                <span className="sm:hidden">Add</span>
               </Button>
             </div>
 
@@ -892,33 +893,31 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                     key={product.id}
                     className="bg-white/5 border border-white/10 rounded-sm p-6 hover:border-[#d4af37]/30 transition-colors"
                   >
-                    <div className="flex gap-6">
+                    <div className="flex items-center gap-3 w-full min-w-0">
                       {/* Product Image */}
-                      <div className="flex gap-2">
-                        <div className="w-24 h-24 bg-white/5 rounded-sm overflow-hidden flex-shrink-0">
-                          <div className="relative group/dbg">
-                            <ImageWithFallback
-                              src={product.mainImage || (product.galleryImages && product.galleryImages[0]) || DEFAULT_IMAGE}
-                              alt={product.name}
-                              className="w-full h-full object-cover"
-                            />
-                            <div className="hidden group-hover/dbg:block absolute bottom-0 left-0 bg-black/80 text-[8px] text-white/50 p-1 truncate max-w-[200px]">
-                              {product.mainImage}
-                            </div>
+                      <div className="w-16 h-16 sm:w-24 sm:h-24 bg-white/5 rounded-sm overflow-hidden flex-shrink-0">
+                        <div className="relative group/dbg w-full h-full">
+                          <ImageWithFallback
+                            src={product.mainImage || (product.galleryImages && product.galleryImages[0]) || DEFAULT_IMAGE}
+                            alt={product.name}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="hidden group-hover/dbg:block absolute bottom-0 left-0 bg-black/80 text-[8px] text-white/50 p-1 truncate max-w-[200px]">
+                            {product.mainImage}
                           </div>
                         </div>
                       </div>
 
                       {/* Product Info */}
-                      <div className="flex-1">
-                        <h4 className="text-white text-xl font-serif mb-1">{product.name}</h4>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-white text-base sm:text-xl font-serif mb-1 truncate">{product.name}</h4>
                         {product.inspiredBy && (
-                          <p className="text-[#d4af37] text-xs mb-2 italic font-medium">Inspired by: {product.inspiredBy}</p>
+                          <p className="text-[#d4af37] text-xs mb-1 italic font-medium truncate">Inspired by: {product.inspiredBy}</p>
                         )}
-                        <p className="text-white/50 text-sm mb-3">{product.description}</p>
+                        <p className="text-white/50 text-xs sm:text-sm mb-2 line-clamp-2">{product.description}</p>
 
                         {product.tags && product.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-3">
+                          <div className="hidden sm:flex flex-wrap gap-2 mb-3">
                             {product.tags.map((tag: string, index: number) => (
                               <span key={index} className="px-2 py-1 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-full text-[#d4af37] text-xs">
                                 {tag}
@@ -927,20 +926,19 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
                           </div>
                         )}
 
-                        <div className="flex gap-4 text-sm">
+                        <div className="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm">
                           <span className="text-[#d4af37]">{product.price} TND</span>
-                          <span className="text-white/40">Category: {product.category === 'Premium' ? 'Fresh' : (product.category || 'N/A')}</span>
-                          <span className="text-white/40">Notes: {Array.isArray(product.notes) ? product.notes.join(', ') : product.notes}</span>
+                          <span className="text-white/40 hidden sm:inline">Category: {product.category === 'Premium' ? 'Fresh' : (product.category || 'N/A')}</span>
                         </div>
                       </div>
 
                       {/* Actions */}
-                      <div className="flex gap-2 items-start">
-                        <button onClick={() => handleEditProduct(product)} className="p-2 text-white/50 hover:text-blue-400 transition-colors">
-                          <Edit2 size={20} />
+                      <div className="flex gap-2 flex-shrink-0 ml-auto">
+                        <button onClick={() => handleEditProduct(product)} className="p-1.5 sm:p-2 text-white/50 hover:text-blue-400 transition-colors">
+                          <Edit2 size={16} />
                         </button>
-                        <button onClick={() => handleDeleteProduct(product.id)} className="p-2 text-white/50 hover:text-red-400 transition-colors">
-                          <Trash2 size={20} />
+                        <button onClick={() => handleDeleteProduct(product.id)} className="p-1.5 sm:p-2 text-white/50 hover:text-red-400 transition-colors">
+                          <Trash2 size={16} />
                         </button>
                       </div>
                     </div>
