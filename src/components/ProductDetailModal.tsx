@@ -53,7 +53,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
     <AnimatePresence>
       <div
         className="fixed inset-0 flex items-center justify-center p-4 md:p-12"
-        style={{ zIndex: 1000, background: 'rgba(0,0,0,0.92)' }}
+        style={{ zIndex: 1000, background: 'rgba(0,0,0,0.95)' }}
         onClick={onClose}
       >
         <motion.div
@@ -66,7 +66,6 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
           {/* Exit Button */}
           <button
             onClick={(e) => {
-              e.preventDefault();
               e.stopPropagation();
               onClose();
             }}
