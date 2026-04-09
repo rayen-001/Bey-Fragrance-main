@@ -55,7 +55,7 @@ fragrances.get('/', async (c) => {
         shippingMethods: true
       },
       orderBy: {
-        createdAt: 'desc'
+        name: 'asc'
       }
     })
 
