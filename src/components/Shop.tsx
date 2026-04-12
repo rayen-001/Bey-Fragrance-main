@@ -64,7 +64,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
       price: displayPrice,
       image: ap.mainImage || '',
       images: ap.galleryImages || [],
-      category: ap.category || 'Fresh',
+      category: ap.category || '',
       genderCategory: (ap.genderCategory as any) || 'Unisex',
       tags: ap.tags || [],
       notes: (ap.notes && ap.notes.join(', ')) || '',
