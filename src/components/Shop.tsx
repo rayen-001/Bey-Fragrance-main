@@ -29,7 +29,7 @@ interface ShopProps {
 }
 
 type GenderFilter = 'All' | 'Man' | 'Woman' | 'Unisex';
-type FragranceTypeFilter = 'All' | 'Aquatic' | 'Citrus' | 'Floral' | 'Fresh' | 'Fruity' | 'Musky' | 'Oriental' | 'Spicy' | 'Sweet' | 'Woody';
+type FragranceTypeFilter = 'All' | 'Aquatic' | 'Aromatic' | 'Citrus' | 'Floral' | 'Fresh' | 'Fruity' | 'Musky' | 'Oriental' | 'Spicy' | 'Sweet' | 'Woody';
 type ProductTypeFilter = 'All' | 'extrait_parfum' | 'original_parfum' | 'accessoire';
 
 export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: initialProducts, cartItemsCount, onCartOpen, currentUser, onLoginClick, onAccountClick, onLogout, isAdmin, onAdminClick, wishlistItems, onToggleWishlist }: ShopProps) {
@@ -130,7 +130,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
   }, [hasMore, isLoadingMore]);
 
   const genderCategories: GenderFilter[] = ['All', 'Man', 'Woman', 'Unisex'];
-  const fragranceCategories: FragranceTypeFilter[] = ['All', 'Aquatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
+  const fragranceCategories: FragranceTypeFilter[] = ['All', 'Aquatic', 'Aromatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
   
   const productTypeCategories: { label: string; value: ProductTypeFilter }[] = [
     { label: 'All', value: 'All' },
