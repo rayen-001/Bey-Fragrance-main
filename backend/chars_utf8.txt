@@ -1,0 +1,86 @@
+﻿[dotenv@17.3.1] injecting env (8) from .env -- tip: ÔÜí´©Å secrets for agents: https://dotenvx.com/as2
+­ƒöù Initializing Prisma connection pool...
+Name: "Issey Miyake LÔÇÖEau dÔÇÖIssey Pour Homme Sport"
+49 73 73 65 79 20 4d 69 79 61 6b 65 20 4c 2019 45 61 75 20 64 2019 49 73 73 65 79 20 50 6f 75 72 20 48 6f 6d 6d 65 20 53 70 6f 72 74 
+
+Name: "JPG Scandal Pour Homme"
+4a 50 47 20 53 63 61 6e 64 61 6c 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Guerlain LÔÇÖHomme Id├®al (EDP)"
+47 75 65 72 6c 61 69 6e 20 4c 2019 48 6f 6d 6d 65 20 49 64 e9 61 6c 20 28 45 44 50 29 
+
+Name: "Gucci Guilty Elixir Pour Homme"
+47 75 63 63 69 20 47 75 69 6c 74 79 20 45 6c 69 78 69 72 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "L'Homme Ideal Platine Prive"
+4c 27 48 6f 6d 6d 65 20 49 64 65 61 6c 20 50 6c 61 74 69 6e 65 20 50 72 69 76 65 
+
+Name: "Dior Homme (2020 Version)"
+44 69 6f 72 20 48 6f 6d 6d 65 20 28 32 30 32 30 20 56 65 72 73 69 6f 6e 29 
+
+Name: "YSL La Nuit de LÔÇÖHomme (EDT)"
+59 53 4c 20 4c 61 20 4e 75 69 74 20 64 65 20 4c 2019 48 6f 6d 6d 65 20 28 45 44 54 29 
+
+Name: "Versace Dilant Blue (Homme)"
+56 65 72 73 61 63 65 20 44 69 6c 61 6e 74 20 42 6c 75 65 20 28 48 6f 6d 6d 65 29 
+
+Name: "Gucci Guilty Elixir de Parfum Pour Homme"
+47 75 63 63 69 20 47 75 69 6c 74 79 20 45 6c 69 78 69 72 20 64 65 20 50 61 72 66 75 6d 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Gucci Guilty Pour Homme (EDT)"
+47 75 63 63 69 20 47 75 69 6c 74 79 20 50 6f 75 72 20 48 6f 6d 6d 65 20 28 45 44 54 29 
+
+Name: "Gucci Guilty Black Pour Homme"
+47 75 63 63 69 20 47 75 69 6c 74 79 20 42 6c 61 63 6b 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Chanel Allure Homme Sport (EDT)"
+43 68 61 6e 65 6c 20 41 6c 6c 75 72 65 20 48 6f 6d 6d 65 20 53 70 6f 72 74 20 28 45 44 54 29 
+
+Name: "Chanel Allure Homme ├ëdition Blanche"
+43 68 61 6e 65 6c 20 41 6c 6c 75 72 65 20 48 6f 6d 6d 65 20 c9 64 69 74 69 6f 6e 20 42 6c 61 6e 63 68 65 
+
+Name: "Scandal Pour Homme Intense"
+53 63 61 6e 64 61 6c 20 50 6f 75 72 20 48 6f 6d 6d 65 20 49 6e 74 65 6e 73 65 
+
+Name: "Scandal Pour Homme Absolu"
+53 63 61 6e 64 61 6c 20 50 6f 75 72 20 48 6f 6d 6d 65 20 41 62 73 6f 6c 75 
+
+Name: "Scandal Pour Homme"
+53 63 61 6e 64 61 6c 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "D&G Light Blue Eau Intense Pour Homme"
+44 26 47 20 4c 69 67 68 74 20 42 6c 75 65 20 45 61 75 20 49 6e 74 65 6e 73 65 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Kenzo L'Eau par Kenzo Marine Pour Homme"
+4b 65 6e 7a 6f 20 4c 27 45 61 75 20 70 61 72 20 4b 65 6e 7a 6f 20 4d 61 72 69 6e 65 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Dior Homme Intense (EDP)"
+44 69 6f 72 20 48 6f 6d 6d 65 20 49 6e 74 65 6e 73 65 20 28 45 44 50 29 
+
+Name: "Dior Homme Sport (EDT)"
+44 69 6f 72 20 48 6f 6d 6d 65 20 53 70 6f 72 74 20 28 45 44 54 29 
+
+Name: "Issey Miyake L'Eau d'Issey Pour Homme"
+49 73 73 65 79 20 4d 69 79 61 6b 65 20 4c 27 45 61 75 20 64 27 49 73 73 65 79 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Prada LÔÇÖHomme (EDT)"
+50 72 61 64 61 20 4c 2019 48 6f 6d 6d 65 20 28 45 44 54 29 
+
+Name: "Chanel Allure Homme Sport Eau Extr├¬me"
+43 68 61 6e 65 6c 20 41 6c 6c 75 72 65 20 48 6f 6d 6d 65 20 53 70 6f 72 74 20 45 61 75 20 45 78 74 72 ea 6d 65 
+
+Name: "Joop! Homme"
+4a 6f 6f 70 21 20 48 6f 6d 6d 65 
+
+Name: "Roja Parfums Elysium (Pour Homme)"
+52 6f 6a 61 20 50 61 72 66 75 6d 73 20 45 6c 79 73 69 75 6d 20 28 50 6f 75 72 20 48 6f 6d 6d 65 29 
+
+Name: "Armani Code Pour Homme (EDT)"
+41 72 6d 61 6e 69 20 43 6f 64 65 20 50 6f 75 72 20 48 6f 6d 6d 65 20 28 45 44 54 29 
+
+Name: "Bvlgari Aqva Pour Homme"
+42 76 6c 67 61 72 69 20 41 71 76 61 20 50 6f 75 72 20 48 6f 6d 6d 65 
+
+Name: "Dolce & Gabbana Light Blue Pour Homme"
+44 6f 6c 63 65 20 26 20 47 61 62 62 61 6e 61 20 4c 69 67 68 74 20 42 6c 75 65 20 50 6f 75 72 20 48 6f 6d 6d 65 
+

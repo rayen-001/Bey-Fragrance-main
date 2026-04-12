@@ -54,7 +54,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
     fetchProducts();
   }, []);
 
-  const displayProducts: Product[] = apiProducts.length > 0 ? apiProducts.map(ap => {
+  const displayProducts: Product[] = (apiProducts.length > 0 ? apiProducts.map(ap => {
     const defaultSize = ap.shippingMethods?.find(sm => sm.name === '50ml');
     const displayPrice = defaultSize ? `${defaultSize.price} TND` : (ap.price ? `${ap.price} TND` : '25 TND');
 
@@ -75,7 +75,13 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
       inspiredBy: ap.inspiredBy || '',
       productType: ap.productType,
     };
-  }) : initialProducts;
+  }) : initialProducts).sort((a, b) => {
+    // Group by Brand/InspiredBy alphabetically
+    // Products with empty inspiredBy will go to the end
+    if (!a.inspiredBy) return 1;
+    if (!b.inspiredBy) return -1;
+    return a.inspiredBy.localeCompare(b.inspiredBy);
+  });
 
   const PAGE_SIZE = 24;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);

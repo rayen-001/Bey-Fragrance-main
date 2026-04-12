@@ -1,0 +1,286 @@
+﻿[dotenv@17.3.1] injecting env (8) from .env -- tip: ­ƒøá´©Å  run anywhere with `dotenvx run -- yourcommand`
+­ƒöù Initializing Prisma connection pool...
+Current products in DB: 283
+- JPG Le Beau Paradise Garden
+- YSL Y Le Parfum
+- YSL Y Elixir
+- Noir Kogane
+- Versace Eros (EDT)
+- Lacoste L.12.12 Silver Grey (Lacoste Gris)
+- 1 Million Royal
+- JPG Le Male Elixir
+- JPG Le Male Le Parfum
+- Armani Priv├® Rouge Malachite
+- Montale Arabians Tonka
+- Tom Ford Oud Wood (EDP)
+- Issey Miyake LÔÇÖEau dÔÇÖIssey Pour Homme Sport
+- Givenchy Gentleman Reserve Priv├®e
+- Versace Eros Flame
+- Mancera Holidays
+- Carolina Herrera 212 Men (NYC)
+- Valentino Born in Roma Intense (Pink)
+- Versace Dylan Turquoise
+- Herm├¿s Terre dÔÇÖHerm├¿s (EDT)
+- Herm├¿s Terre dÔÇÖHerm├¿s Eau Givr├®e
+- YSL Myslf (EDP)
+- YSL Libre (EDP)
+- Gucci Bloom (EDP)
+- YSL Black Opium (EDP)
+- Lanc├┤me Tr├®sor Midnight Rose
+- JPG Divine (EDP)
+- JPG Scandal Pour Homme
+- Guerlain LÔÇÖHomme Id├®al (EDP)
+- Chanel Allure Sensuelle
+- Tom Ford Sole di Positano
+- Nishane Hundred Silent Ways
+- Tom Ford Tuscan Leather
+- Versace Crystal Noir (EDP)
+- Versace Bright Crystal Absolu
+- Versace Bright Crystal (EDT)
+- Versace Eros Pour Femme (EDP)
+- Paco Rabanne Invictus Victory
+- Parfums de Marly Valaya
+- Parfums de Marly Oriana
+- Roja Parfums Apex (EDP)
+- D&G The One for Man (EDT)
+- JPG Le Male
+- Valentino Born in Roma Yellow Dream
+- Sauvage (Parfum)
+- Oud Ispahan
+- Armani Stronger With You (EDT)
+- Sauvage (Eau Forte)
+- Gucci Guilty Elixir Pour Homme
+- Sauvage (EDP)
+- J'adore (EDP)
+- Burberry Weekend for Men
+- L'Homme Ideal Platine Prive
+- Prada Luna Rossa Black
+- JPG La Belle (EDP)
+- Boss Bottled Night
+- Invictus (EDT)
+- Lacoste Red (Style in Play)
+- Blanc Kogane
+- Badi Al Oud (Ï¿Ï»┘èÏ╣ Ïº┘äÏ╣┘êÏ»)
+- Miss Dior (EDP 2021)
+- Tom Ford Ombr├® Leather (EDP)
+- Oud G
+- Tom Ford Oud Minerale (EDP)
+- Jo Malone English Pear & Freesia
+- JPG  Le Beau
+- Dior Fahrenheit (EDT)
+- Dior Home Sport (2021 Version)
+- Dior Homme (2020 Version)
+- Maison Margiela Beach Walk
+- Montblanc Legend (EDT)
+- Hugo Boss Boss Bottled (EDT)
+- YSL Y Eau de Parfum
+- JPG Le Male Lover
+- JPG Ultra Male
+- JPG Le Male Elixir Absolu
+- Montblanc Explorer
+- Bad Boy (EDT)
+- Parfums de Marly Carlisle (EDP)
+- JPG Scandal (Woman)
+- YSL Mon Paris (EDP)
+- YSL La Nuit de LÔÇÖHomme (EDT)
+- Valentino Born in Roma Intense (Uomo)
+- YSL Libre Intense (EDP)
+- Bvlgari Tygar
+- Born in Roma Uomo
+- Valentino Born in Roma Coral Fantasy
+- Valentino Uomo Born in Roma
+- Versace Dilant Blue (Homme)
+- Versace Eros (EDP)
+- Versace Oud Noir
+- Versace Eros Najim (Parfum)
+- YSL MYSLF Eau de Parfum
+- Ralph Lauren Polo Red
+- Ralph Lauren Polo Black
+- Ralph Lauren Polo Blue (EDT)
+- Nishane Hacivat
+- Orto Parisi Megamare
+- Nautica Voyage
+- Vertus Sole Patchouli
+- Maison Margiela Replica By the Fireplace
+- Hugo Boss Boss Orange Man
+- Hugo Boss The Scent Elixir For Him
+- Hugo Boss Boss Bottled Elixir
+- Hugo Boss Boss Bottled Infinite
+- Hugo Boss Boss Bottled Unlimited (Boss White)
+- Gucci Guilty Elixir de Parfum Pour Homme
+- Gucci Guilty Pour Homme (EDT)
+- Gucci Guilty Black Pour Homme
+- Rabanne Invictus Platinum
+- Rabanne Invictus Legend
+- Chanel Allure Homme Sport (EDT)
+- Chanel Allure Homme ├ëdition Blanche
+- Giorgio Armani Armani Code Sport
+- Giorgio Armani Armani Code Absolu
+- Armani Code (aka ÔÇ£Black CodeÔÇØ)
+- Armani Code Eau de Toilette (2023)
+- Scandal Pour Homme Intense
+- Scandal Pour Homme Absolu
+- Scandal Pour Homme
+- CK One
+- Dior Sauvage (Eau de Toilette)
+- Bleu de Chanel Parfum (Exclusive)
+- Armani Priv├® Vert Malachite
+- Bleu de Chanel Eau de Parfum
+- 1 Million Lucky
+- 1 Million
+- Black XS
+- Pure XS
+- Black XS LÔÇÖExces for Him
+- Emporio Armani Stronger With You
+- Armani Priv├® Bleu Turquoise
+- D&G Light Blue Eau Intense Pour Homme
+- D&G The One for Men Eau de Parfum
+- K by Dolce & Gabbana
+- D&G Pineapple (Fruit Collection)
+- DGVIB3 Eau de Parfum
+- Mancera Choco Violette
+- Evaflor Whisky Silver
+- D&G The One Royal Night (┘ä┘è┘ä ┘à┘ä┘â┘è)
+- Arabian Oud Kalemat (┘â┘ä┘àÏºÏ¬)
+- AngelsÔÇÖ Share
+- Lalique LÔÇÖAmour
+- Kajal Almaz (Almas)
+- Baccarat Rouge 540
+- Oud Satin Mood
+- Kurky
+- Tiziana Terenzi Kirk├¿
+- Montale Rendez-Vous ├á Paris
+- Ralph Lauren RalphÔÇÖs Club (EDP)
+- Kenzo L'Eau par Kenzo Marine Pour Homme
+- Al Faris (Ïº┘ä┘üÏºÏ▒Ï│)
+- Fakhr Lattafa (┘üÏ«Ï▒ ┘äÏÀÏº┘üÏ®)
+- Sheikh Al Shuyukh (Ï┤┘èÏ« Ïº┘äÏ┤┘è┘êÏ«)
+- Amir Al Arab (Ïú┘à┘èÏ▒ Ïº┘äÏ╣Ï▒Ï¿)
+- Xerjoff Overdose (EDP)
+- Xerjoff Alexandria II (EDP)
+- Xerjoff Tomi (EDP)
+- Xerjoff Torino 22 (EDP)
+- Xerjoff Accento (EDP)
+- Xerjoff Renaissance (EDP)
+- Xerjoff Erba Gold (EDP)
+- Xerjoff Erba Pura (EDP)
+- Xerjoff Naxos (EDP)
+- Dior Homme Intense (EDP)
+- Dior Homme Sport (EDT)
+- Tom Ford Vanille Fatale (EDP)
+- Tom Ford Tobacco Vanille (EDP)
+- Tom Ford Noir Extreme (EDP)
+- Tom Ford Mandarino di Amalfi (EDP)
+- Montale Rose Musk
+- Montale Oud Tobacco
+- Montale Arabians
+- Montale Starry Night
+- Montale Intense Cafe
+- Paco Rabanne Black XS for Her
+- Terenzi Kirke (Extrait de Parfum)
+- Lattafa Khamrah (Ï«┘àÏ▒Ï®)
+- Lattafa Yara (Pink)
+- Spicebomb Extreme
+- Stronger With You Intensely
+- Stronger With You Absolutely
+- Aqua Allegoria Pamplelune
+- Aqua Allegoria Mandarine Basilic
+- Guerlain Mon Guerlain (EDP)
+- Givenchy LÔÇÖInterdit (EDP)
+- Givenchy Gentleman Society
+- Issey Miyake L'Eau d'Issey Pour Homme
+- Issey Miyake LÔÇÖEau dÔÇÖIssey Solar Lavender
+- Issey Miyake LÔÇÖEau dÔÇÖIssey Pure Petale de Nectar
+- Jo Malone Wood Sage & Sea Salt
+- Jo Malone Lime Basil & Mandarin
+- Carolina Herrera 212 Men Heroes
+- Carolina Herrera 212 VIP Black
+- Bad Boy Cobalt (EDP Electrique)
+- Bad Boy Extreme
+- Good Girl (EDP)
+- Herm├¿s H24 (EDP)
+- Prada Luna Rossa Carbon
+- Prada LÔÇÖHomme (EDT)
+- Prada Paradoxe (EDP)
+- Azzaro The Most Wanted Parfum
+- Azzaro Wanted by Night
+- Armani Code Parfum
+- Chlo├® Eau de Parfum
+- Chlo├® Love Story
+- Chlo├® Nomade (EDP)
+- Chanel Coco Mademoiselle (EDP)
+- Chanel Bleu de Chanel (Parfum)
+- Chanel Chance Eau Tendre (EDP)
+- Chanel Chance Eau Fra├«che (EDP)
+- Chanel Allure Homme Sport Eau Extr├¬me
+- Cartier La Panth├¿re (EDP)
+- Cartier Pasha de Cartier (Parfum)
+- Gucci Flora Gorgeous Gardenia
+- Gucci Flora Gorgeous Jasmine
+- Gucci Flora Gorgeous Magnolia
+- Byredo Mojave Ghost
+- Byredo Bal dÔÇÖAfrique
+- Frederic Malle Portrait of a Lady
+- Boss Bottled (EDT)
+- Boss Bottled Elixir
+- Hugo Red
+- Narciso Rodriguez Pure Musc
+- Narciso Rodriguez For Her (EDP)
+- Narciso Rodriguez Musc Noir Rose
+- Lanc├┤me Id├┤le (EDP)
+- Burberry Her (EDP)
+- Burberry Goddess (EDP)
+- Joop! Homme
+- Lacoste Blanc (L.12.12 Pure)
+- Lacoste Match Point (EDP)
+- Tom Ford Black Orchid (EDP)
+- Tom Ford Grey Vetiver (EDP)
+- Amouage Reflection Man
+- Amouage Interlude Man
+- Roja Parfums Elysium (Pour Homme)
+- Parfums de Marly Layton
+- Parfums de Marly Delina
+- Creed Aventus (EDP)
+- Creed Silver Mountain Water
+- Creed Original Santal
+- Maison Margiela By the Fireplace
+- Maison Margiela Jazz Club
+- Viktor&Rolf Flowerbomb
+- Viktor&Rolf Spicebomb (EDT)
+- Lanc├┤me La Vie Est Belle (EDP)
+- Lanc├┤me Oud Bouquet
+- Armani S├¼ (EDP)
+- Armani S├¼ Passione
+- Armani My Way (EDP)
+- Acqua di Gioia (EDP)
+- Armani Code Pour Homme (EDT)
+- YSL Black Opium Le Parfum
+- Guerlain La Petite Robe Noire
+- Guerlain Shalimar (EDP)
+- Guerlain Habit Rouge (EDT)
+- D&G The Only One
+- D&G Pour Femme
+- Chanel No. 5 (EDP)
+- Bvlgari Aqva Pour Homme
+- Bvlgari Goldea (EDP)
+- Kilian Love DonÔÇÖt Be Shy
+- Bond No. 9 New York Nights
+- Zene (The Art of Love)
+- Nishane Hacivat (EDP)
+- Nishane Ani (EDP)
+- Mancera Paris Roses Vanille
+- Mancera Red Tobacco
+- Mancera Instant Crush
+- Mancera Cedrat Boise
+- Club de Nuit Intense Man (EDT)
+- Sauvage (EDT)
+- Sauvage Elixir
+- Dolce & Gabbana Light Blue Pour Homme
+- Bleu de Chanel (EDP)
+- Acqua di Gio (EDT)
+- Acqua di Gio Profondo
+- Lattafa Asad (ÏúÏ│Ï»)
+- Prada Luna Rossa Ocean (EDP)
+- Paco Rabanne Phantom (EDT)
+- Carolina Herrera 212 VIP Rose
+- Carolina Herrera Good Girl Blush

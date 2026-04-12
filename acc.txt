@@ -1,5 +1,5 @@
-📧 Email: admin@hamafragrance.com
-🔑 Password: Hama@Fragrance&2026#Secure!
+📧 Email: admin@hamafragrance.com 
+🔑 Password: Hama@Fragrance&2026#Secure! 
 
 
 JWT Secure   :mySecretKey123456
