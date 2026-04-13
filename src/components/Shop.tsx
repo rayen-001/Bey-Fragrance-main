@@ -64,8 +64,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
       price: displayPrice,
       image: ap.mainImage || '',
       images: ap.galleryImages || [],
-      category: ap.category || '',
-      genderCategory: (ap.genderCategory as any) || 'Unisex',
+      category: (ap.category || '').trim(),
+      genderCategory: ((ap as any).genderCategory || 'Unisex').trim(),
       tags: ap.tags || [],
       notes: (ap.notes && ap.notes.join(', ')) || '',
       description: ap.description || '',
@@ -94,8 +94,11 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
   }, [activeGender, activeFragrance, activeProductType, inspiredBySearch]);
 
   const filteredProducts = displayProducts.filter(p => {
-    const matchGender = activeGender === 'All' ? true : (p as any).genderCategory?.toLowerCase() === activeGender.toLowerCase();
-    const matchFragrance = activeFragrance === 'All' ? true : (p.category || '').toLowerCase() === activeFragrance.toLowerCase();
+    const matchGender = activeGender === 'All' ? true : (
+      (p as any).genderCategory?.toLowerCase().trim() === activeGender.toLowerCase() ||
+      (p as any).genderCategory?.toLowerCase().trim() === 'unisex'
+    );
+    const matchFragrance = activeFragrance === 'All' ? true : (p.category || '').toLowerCase().includes(activeFragrance.toLowerCase().trim());
     const searchLow = inspiredBySearch.toLowerCase().trim();
     const matchSearch = searchLow === '' ? true : (
       (p.name || '').toLowerCase().includes(searchLow) ||

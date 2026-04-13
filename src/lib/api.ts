@@ -22,8 +22,8 @@ export const getFragrances = async (): Promise<Product[]> => {
   const rawProducts = data.data || [];
   return rawProducts.map((p: any) => ({
     ...p,
-    category: p.category || 'Fresh',
-    genderCategory: p.genderCategory || 'Unisex'
+    category: (p.category || 'Fresh').trim(),
+    genderCategory: (p.genderCategory || 'Unisex').trim()
   }));
 };
 
