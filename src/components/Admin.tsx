@@ -313,7 +313,7 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
   const confirmedOrders = orders.filter(o => o.status === 'Confirmed' || o.status === 'Shipped');
 
   const categoryChartData = (() => {
-    const categories = ['Aquatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
+    const categories = ['Aquatic', 'Aromatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
     const counts: Record<string, number> = {};
     categories.forEach(cat => counts[cat] = 0);
 
