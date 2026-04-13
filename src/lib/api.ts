@@ -22,8 +22,8 @@ export const getFragrances = async (): Promise<Product[]> => {
   const rawProducts = data.data || [];
   return rawProducts.map((p: any) => ({
     ...p,
-    category: (p.category || 'Fresh').trim(),
-    genderCategory: (p.genderCategory || 'Unisex').trim()
+    category: p.category || 'Fresh',
+    genderCategory: p.genderCategory || 'Unisex'
   }));
 };
 
@@ -599,10 +599,10 @@ export const cartApi = {
   // Remove item
   remove: async (productId: string, shippingMethodId?: string) => {
     try {
-      const url = shippingMethodId 
+      const url = shippingMethodId
         ? `${API_BASE_URL}/cart/${productId}?shippingMethodId=${shippingMethodId}`
         : `${API_BASE_URL}/cart/${productId}`;
-        
+
       const response = await fetch(url, {
         method: 'DELETE',
         headers: await getAuthHeaders(true),

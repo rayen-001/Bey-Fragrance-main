@@ -64,8 +64,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
       price: displayPrice,
       image: ap.mainImage || '',
       images: ap.galleryImages || [],
-      category: (ap.category || '').trim(),
-      genderCategory: ((ap as any).genderCategory || 'Unisex').trim(),
+      category: (ap.category || 'Fresh').trim(),
+      genderCategory: (ap.genderCategory as any) || 'Unisex',
       tags: ap.tags || [],
       notes: (ap.notes && ap.notes.join(', ')) || '',
       description: ap.description || '',
@@ -94,11 +94,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
   }, [activeGender, activeFragrance, activeProductType, inspiredBySearch]);
 
   const filteredProducts = displayProducts.filter(p => {
-    const matchGender = activeGender === 'All' ? true : (
-      (p as any).genderCategory?.toLowerCase().trim() === activeGender.toLowerCase() ||
-      (p as any).genderCategory?.toLowerCase().trim() === 'unisex'
-    );
-    const matchFragrance = activeFragrance === 'All' ? true : (p.category || '').toLowerCase().includes(activeFragrance.toLowerCase().trim());
+    const matchGender = activeGender === 'All' ? true : (p as any).genderCategory?.toLowerCase() === activeGender.toLowerCase();
+    const matchFragrance = activeFragrance === 'All' ? true : (p.category || '').toLowerCase().trim() === activeFragrance.toLowerCase().trim();
     const searchLow = inspiredBySearch.toLowerCase().trim();
     const matchSearch = searchLow === '' ? true : (
       (p.name || '').toLowerCase().includes(searchLow) ||
@@ -134,7 +131,7 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
 
   const genderCategories: GenderFilter[] = ['All', 'Man', 'Woman', 'Unisex'];
   const fragranceCategories: FragranceTypeFilter[] = ['All', 'Aquatic', 'Aromatic', 'Citrus', 'Floral', 'Fresh', 'Fruity', 'Musky', 'Oriental', 'Spicy', 'Sweet', 'Woody'];
-  
+
   const productTypeCategories: { label: string; value: ProductTypeFilter }[] = [
     { label: 'All', value: 'All' },
     { label: 'Extrait de Parfum', value: 'extrait_parfum' },
@@ -260,8 +257,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           key={cat}
                           onClick={() => setActiveGender(cat)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeGender === cat
-                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/60 hover:text-white'
+                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                            : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat}
@@ -281,8 +278,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           key={cat}
                           onClick={() => setActiveFragrance(cat)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeFragrance === cat
-                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/60 hover:text-white'
+                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                            : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat}
@@ -302,8 +299,8 @@ export default function Shop({ onNavigate, onBuyProduct, onAddToCart, products: 
                           key={cat.value}
                           onClick={() => setActiveProductType(cat.value)}
                           className={`px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest transition-all whitespace-nowrap ${activeProductType === cat.value
-                              ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
-                              : 'text-white/60 hover:text-white'
+                            ? 'bg-[#d4af37] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
+                            : 'text-white/60 hover:text-white'
                             }`}
                         >
                           {cat.label}

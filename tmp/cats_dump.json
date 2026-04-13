@@ -1,0 +1,53 @@
+{
+  "categories": [
+    {
+      "_count": 68,
+      "category": "Sweet"
+    },
+    {
+      "_count": 32,
+      "category": "Fruity"
+    },
+    {
+      "_count": 12,
+      "category": "Musky"
+    },
+    {
+      "_count": 60,
+      "category": "Oriental"
+    },
+    {
+      "_count": 36,
+      "category": "Floral"
+    },
+    {
+      "_count": 10,
+      "category": "Spicy"
+    },
+    {
+      "_count": 14,
+      "category": "Aquatic"
+    },
+    {
+      "_count": 14,
+      "category": "Unisex"
+    },
+    {
+      "_count": 23,
+      "category": "Citrus"
+    },
+    {
+      "_count": 17,
+      "category": "Aromatic"
+    },
+    {
+      "_count": 47,
+      "category": "Woody"
+    },
+    {
+      "_count": 32,
+      "category": "Woman"
+    }
+  ],
+  "timestamp": "2026-04-13T01:06:20.805Z"
+}

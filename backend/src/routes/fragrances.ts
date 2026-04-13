@@ -17,10 +17,10 @@ const stockUpdateSchema = z.object({
 fragrances.get('/', async (c) => {
   try {
     const { category, note, price_max, q, type } = c.req.query()
-    
+
     // Construct Prisma where clause
     const where: any = {}
-    
+
     if (category) {
       where.category = category
     }
@@ -28,7 +28,7 @@ fragrances.get('/', async (c) => {
     if (type) {
       where.productType = type
     }
-    
+
     // Search across name and inspiredBy
     if (q) {
       where.OR = [
@@ -36,13 +36,13 @@ fragrances.get('/', async (c) => {
         { inspiredBy: { contains: q, mode: 'insensitive' } }
       ];
     }
-    
+
     if (note) {
       where.notes = {
         has: note
       }
     }
-    
+
     if (price_max) {
       where.price = {
         lte: parseFloat(price_max)
@@ -203,11 +203,11 @@ fragrances.patch('/:id/stock', async (c) => {
     })
   } catch (error: any) {
     console.error('Stock update transaction failed:', error.message)
-    
+
     if (error.message === 'ProductNotFound') {
       return c.json({ success: false, error: 'Fragrance not found' }, 404)
     }
-    
+
     if (error.message === 'InsufficientStock') {
       return c.json({ success: false, error: 'Insufficient stock availability' }, 400)
     }
@@ -247,7 +247,7 @@ fragrances.post('/', async (c) => {
     }
 
     const newFragrance = await prisma.product.create({
-       data: validation.data
+      data: validation.data
     })
 
     // Auto-create standard shipping methods for new products
@@ -258,10 +258,10 @@ fragrances.post('/', async (c) => {
       ]
     })
 
-    return c.json({ 
-       success: true, 
-       message: 'Fragrance created with standard 50ml/100ml sizes',
-       data: newFragrance 
+    return c.json({
+      success: true,
+      message: 'Fragrance created with standard 50ml/100ml sizes',
+      data: newFragrance
     }, 201)
   } catch (error) {
     console.error('Error creating fragrance:', error)
