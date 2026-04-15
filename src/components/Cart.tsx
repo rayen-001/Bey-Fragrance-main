@@ -341,7 +341,7 @@ export default function Cart({
                                 
                                 <div className="flex-1 min-w-0">
                                   <div className="flex justify-between items-start">
-                                    <h4 className="text-white font-serif text-lg truncate">{item.name}</h4>
+                                    <h4 translate="no" className="product-title notranslate text-white font-serif text-lg truncate">{item.name}</h4>
                                     <button onClick={() => onRemoveItem(item.id)} className="text-white/30 hover:text-red-400 p-1 transition-colors"><Trash2 size={16} /></button>
                                   </div>
                                   <div className="flex flex-wrap items-center gap-3">
@@ -400,7 +400,7 @@ export default function Cart({
                             <div className="flex gap-6">
                               <div className="w-20 h-20 bg-black rounded-xl overflow-hidden"><img src={product.image} className="w-full h-full object-cover" /></div>
                               <div className="flex-1">
-                                <h4 className="text-white font-serif">{product.name}</h4>
+                                <h4 translate="no" className="product-title notranslate text-white font-serif">{product.name}</h4>
                                 <p className="text-[#d4af37] text-sm mb-3">{product.price}</p>
                                 <button onClick={() => onMoveToCart(product)} className="text-xs font-bold uppercase tracking-widest text-[#d4af37] flex items-center gap-2">Move to Cart <ArrowRight size={14} /></button>
                               </div>

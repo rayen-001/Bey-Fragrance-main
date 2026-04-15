@@ -147,13 +147,13 @@ export function ProductCard({
       {/* Content */}
       <div className="p-4 sm:p-6 bg-black/40 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2 min-h-[3.5rem]">
-          <h3 className="font-serif text-base sm:text-xl font-semibold text-white group-hover:text-[#d4af37] transition-colors line-clamp-2 leading-tight flex-1">
+          <h3 translate="no" className="product-title notranslate font-serif text-base sm:text-xl font-semibold text-white group-hover:text-[#d4af37] transition-colors line-clamp-2 leading-tight flex-1">
             {name}
           </h3>
           <span className="text-[#d4af37] font-bold whitespace-nowrap ml-4 pt-1">{price}</span>
         </div>
         {inspiredBy && (
-          <p className="text-[#d4af37] text-[10px] italic mb-2 -mt-1 font-medium">Inspired by: {inspiredBy}</p>
+          <p translate="no" className="product-subtitle notranslate text-[#d4af37] text-[10px] italic mb-2 -mt-1 font-medium">Inspired by: {inspiredBy}</p>
         )}
         
         {/* Rating Row (Now moved below the name for better readability as requested) */}

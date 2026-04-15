@@ -143,7 +143,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
               <span className="text-[#d4af37] text-[10px] uppercase font-bold tracking-[0.4em] mb-2 block">
                 {product.brand}
               </span>
-              <h2 className="text-white font-serif text-3xl lg:text-4xl leading-tight mb-4">
+              <h2 translate="no" className="product-title notranslate text-white font-serif text-3xl lg:text-4xl leading-tight mb-4">
                 {product.name}
               </h2>
 
@@ -219,7 +219,7 @@ export function ProductDetailModal({ product, isOpen, onClose, onAddToCart, onBu
 
               <div className="py-2">
                 <h3 className="text-white/20 text-xs uppercase tracking-[0.3em] font-bold mb-2">Inspired By</h3>
-                <p className="text-white text-[11px] font-bold uppercase tracking-widest">{product.inspiredBy || 'Original'}</p>
+                <p translate="no" className="product-subtitle notranslate text-white text-[11px] font-bold uppercase tracking-widest">{product.inspiredBy || 'Original'}</p>
               </div>
             </div>
 
