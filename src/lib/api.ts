@@ -1,7 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 import { Product } from '../types';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string)?.trim() || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.PROD
+  ? '/api'
+  : ((import.meta.env.VITE_API_BASE_URL as string)?.trim() || 'http://localhost:3001');
 const SUPABASE_URL = (import.meta.env.VITE_SUPABASE_URL as string)?.trim();
 const SUPABASE_ANON_KEY = (import.meta.env.VITE_SUPABASE_ANON_KEY as string)?.trim();
 

@@ -20,9 +20,10 @@ import { authMiddleware } from './middleware/auth'
 import { prisma } from './db/prisma'
 
 const app = new Hono()
+const api = new Hono()
 
 // --- 1. Global Middleware ---
-app.use('*', logger())
+api.use('*', logger())
 
 // Updated CORS to allow frontend communication and JWT headers
 const productionOrigins = (process.env.FRONTEND_URL || '').split(',').filter(Boolean)
@@ -36,7 +37,7 @@ const allowedOrigins = [
   'http://127.0.0.1:8080',
 ].filter(Boolean) as string[]
 
-app.use('*', cors({
+api.use('*', cors({
   origin: '*',
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
@@ -44,7 +45,7 @@ app.use('*', cors({
 
 // --- 2. Public Routes ---
 // These must be accessible without a token
-app.get('/', (c) => {
+api.get('/', (c) => {
   return c.json({
     message: 'Hello World from Hama Parfum Backend!',
     status: 'success'
@@ -52,51 +53,55 @@ app.get('/', (c) => {
 })
 
 // Mount Auth (Login/Signup)
-app.route('/auth', auth)
+api.route('/auth', auth)
 
 // --- 3. Protected Routes & Middleware ---
 // Apply authMiddleware specifically to routes that require a logged-in user or admin
 
 // Favorites, Uploads, and Analytics always require authentication
-app.use('/favorites/*', authMiddleware)
-app.use('/cart/*', authMiddleware)
-app.use('/upload/*', authMiddleware)
-app.use('/analytics/*', authMiddleware)
+api.use('/favorites/*', authMiddleware)
+api.use('/cart/*', authMiddleware)
+api.use('/upload/*', authMiddleware)
+api.use('/analytics/*', authMiddleware)
 
 // Admin Protection for Fragrances and Orders:
 // Fragrances: POST, PUT, DELETE require admin
 // Orders: GET (all) and PUT (status) require admin
-app.use('/fragrances', async (c, next) => {
+api.use('/fragrances', async (c, next) => {
   if (['POST', 'PUT', 'DELETE'].includes(c.req.method)) {
     return authMiddleware(c, next)
   }
   await next()
 })
 
-app.use('/fragrances/:id', async (c, next) => {
+api.use('/fragrances/:id', async (c, next) => {
   if (['PUT', 'DELETE'].includes(c.req.method)) {
     return authMiddleware(c, next)
   }
   await next()
 })
 
-app.use('/orders', async (c, next) => {
+api.use('/orders', async (c, next) => {
   if (['GET', 'PUT'].includes(c.req.method)) {
     return authMiddleware(c, next)
   }
   await next()
 })
 
-app.use('/orders/my', authMiddleware)
+api.use('/orders/my', authMiddleware)
 
 // Finally, mount the fragrance and order routes
-app.route('/favorites', favorites)
-app.route('/cart', cart)
-app.route('/upload', upload)
-app.route('/fragrances', fragrances)
-app.route('/orders', orders)
-app.route('/analytics', analytics)
-app.route('/reviews', reviews)
+api.route('/favorites', favorites)
+api.route('/cart', cart)
+api.route('/upload', upload)
+api.route('/fragrances', fragrances)
+api.route('/orders', orders)
+api.route('/analytics', analytics)
+api.route('/reviews', reviews)
+
+// Mount the api router under both root '/' and '/api' paths to support dual hosting
+app.route('/api', api)
+app.route('/', api)
 
 // --- 4. Error Handling ---
 app.notFound((c) => {
@@ -123,12 +128,14 @@ console.log('[ENV CHECK] DATABASE_URL:', process.env.DATABASE_URL ? 'SET' : 'MIS
 console.log('[ENV CHECK] SUPABASE_URL:', process.env.SUPABASE_URL ? 'SET' : 'MISSING')
 console.log('[ENV CHECK] SUPABASE_SERVICE_ROLE_KEY:', process.env.SUPABASE_SERVICE_ROLE_KEY ? 'SET' : 'MISSING')
 
-console.log(`Server is running on http://localhost:${port}`)
-
-serve({
-  fetch: app.fetch,
-  port,
-})
+// Serve local node server only when running outside Vercel production
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  console.log(`Server is running on http://localhost:${port}`)
+  serve({
+    fetch: app.fetch,
+    port,
+  })
+}
 
 // Graceful Shutdown
 const shutdown = async () => {
@@ -139,3 +146,5 @@ const shutdown = async () => {
 
 process.on('SIGINT', shutdown)
 process.on('SIGTERM', shutdown)
+
+export default app

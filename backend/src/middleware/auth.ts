@@ -47,7 +47,8 @@ export const authMiddleware = async (c: Context, next: Next) => {
     // e.g. a request to /orders/my has path '/my' inside the orders router,
     // and a request to /orders has path '/' inside the orders router.
     // Use c.req.url or the raw path for global middleware checks.
-    const rawPath = new URL(c.req.url).pathname
+    const pathName = new URL(c.req.url).pathname
+    const rawPath = pathName.startsWith('/api') ? pathName.substring(4) : pathName
     
     // Admin-only: GET /orders (all orders list) — raw path is exactly '/orders'
     const isAdminOrdersList = method === 'GET' && rawPath === '/orders'
