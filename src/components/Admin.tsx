@@ -10,7 +10,9 @@ import { getFragrances, productsApi, ordersApi } from '../lib/api';
 import type { Product as ApiProduct } from '../types';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL as string)?.trim() || 'http://localhost:3002';
+const API_BASE_URL = import.meta.env.PROD
+  ? '/api'
+  : ((import.meta.env.VITE_API_BASE_URL as string)?.trim() || 'http://localhost:3001');
 const DEFAULT_IMAGE = "https://placehold.co/400x600?text=Fragrance+Photo";
 
 interface OrderItem {
