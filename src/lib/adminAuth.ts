@@ -1,4 +1,4 @@
-import { supabase } from './api';
+import { supabase, authApi } from './api';
 
 const ADMIN_SESSION_KEY = 'hama_fragrance_admin_session';
 
@@ -7,15 +7,15 @@ export interface AdminSession {
   loginTime: string;
 }
 
-// Check if admin is logged in via Supabase session + role
+// Check if admin is logged in via Supabase session + role from the backend DB
 export const isAdminLoggedIn = async (): Promise<boolean> => {
   try {
     const { data } = await supabase.auth.getSession();
     const session = data.session;
     if (!session) return false;
 
-    const role = session.user?.user_metadata?.role;
-    return role === 'admin';
+    const adminCheck = await authApi.isAdmin();
+    return adminCheck.isAdmin === true;
   } catch (error) {
     console.error('Error checking admin session:', error);
     return false;
@@ -60,15 +60,14 @@ export const getAdminSession = (): AdminSession | null => {
 // This function is kept for backward compatibility but is no longer the primary entry point
 export const loginAdmin = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
   try {
-    const { authApi } = await import('./api');
     const result = await authApi.signIn(email, password);
 
     if (!result.success) {
       return { success: false, error: result.error || 'Login failed' };
     }
 
-    const role = result.user?.user_metadata?.role;
-    if (role !== 'admin') {
+    const adminCheck = await authApi.isAdmin();
+    if (!adminCheck.isAdmin) {
       await authApi.signOut();
       return { success: false, error: 'Access denied. Admin privileges required.' };
     }

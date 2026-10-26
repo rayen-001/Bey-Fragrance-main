@@ -40,11 +40,10 @@ export default function AdminLogin({ onLoginSuccess, onBack }: AdminLoginProps) 
         return;
       }
 
-      // Verify admin role from Supabase user_metadata
-      const user = result.user;
-      const role = user?.user_metadata?.role;
+      // Verify admin role from the backend DB (user_metadata is user-editable, never trust it)
+      const adminCheck = await authApi.isAdmin();
 
-      if (role !== 'admin') {
+      if (!adminCheck.isAdmin) {
         setError('Access denied. Admin privileges required.');
         await authApi.signOut();
         setIsLoading(false);

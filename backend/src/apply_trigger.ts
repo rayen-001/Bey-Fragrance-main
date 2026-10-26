@@ -11,9 +11,14 @@ async function applyTrigger() {
   
   try {
     console.log('Applying trigger function...');
+    // Role is always CUSTOMER: raw_user_meta_data is user-controlled at signup
     await prisma.$executeRawUnsafe(`
       CREATE OR REPLACE FUNCTION public.handle_new_user()
-      RETURNS TRIGGER AS $$
+      RETURNS TRIGGER
+      LANGUAGE plpgsql
+      SECURITY DEFINER
+      SET search_path = ''
+      AS $$
       BEGIN
         INSERT INTO public.users (id, email, password, full_name, role, updated_at)
         VALUES (
@@ -21,13 +26,16 @@ async function applyTrigger() {
           new.email,
           'EXTERNAL_AUTH',
           COALESCE(new.raw_user_meta_data->>'name', new.raw_user_meta_data->>'full_name', 'New User'),
-          COALESCE(new.raw_user_meta_data->>'role', 'CUSTOMER')::public."Role",
+          'CUSTOMER'::public."Role",
           now()
         );
         RETURN new;
       END;
-      $$ LANGUAGE plpgsql SECURITY DEFINER;
+      $$;
     `);
+
+    console.log('Revoking API access to trigger function...');
+    await prisma.$executeRawUnsafe(`REVOKE EXECUTE ON FUNCTION public.handle_new_user() FROM public, anon, authenticated;`);
 
     console.log('Dropping old trigger if exists...');
     await prisma.$executeRawUnsafe(`DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;`);

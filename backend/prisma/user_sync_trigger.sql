@@ -1,19 +1,29 @@
 -- 1. Create the function to handle new user insertion
 -- This function will be called whenever a new user is created in Supabase Auth
+-- Role is always CUSTOMER: raw_user_meta_data is user-controlled at signup, so it must never decide the role.
+-- Promote admins manually in public.users.
 CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = ''
+AS $$
 BEGIN
-  INSERT INTO public.users (id, email, password, full_name, role)
+  INSERT INTO public.users (id, email, password, full_name, role, updated_at)
   VALUES (
     new.id,
     new.email,
     'EXTERNAL_AUTH', -- Required by Prisma schema, using dummy value for non-local auth
     COALESCE(new.raw_user_meta_data->>'name', new.raw_user_meta_data->>'full_name', 'New User'),
-    COALESCE(new.raw_user_meta_data->>'role', 'CUSTOMER')::public."Role"
+    'CUSTOMER'::public."Role",
+    now()
   );
   RETURN new;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$;
+
+-- Trigger functions don't need to be callable through the API
+REVOKE EXECUTE ON FUNCTION public.handle_new_user() FROM public, anon, authenticated;
 
 -- 2. Create the trigger
 -- After every insert in auth.users, execute the handle_new_user function
