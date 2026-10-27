@@ -40,6 +40,7 @@ import FAQ from './components/FAQ';
 import SizeGuide from './components/SizeGuide';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
+import OfferLanding from './components/OfferLanding';
 
 export default function App() {
   const navigate = useNavigate();
@@ -616,6 +617,7 @@ export default function App() {
         <Route path="/size-guide" element={<SizeGuide onNavigate={handleNavigate} {...navigationProps} />} />
         <Route path="/privacy" element={<PrivacyPolicy onNavigate={handleNavigate} {...navigationProps} />} />
         <Route path="/terms" element={<TermsOfService onNavigate={handleNavigate} {...navigationProps} />} />
+        <Route path="/offer/:slug" element={<OfferLanding />} />
       </Routes>
       
       {/* Cart Component */}

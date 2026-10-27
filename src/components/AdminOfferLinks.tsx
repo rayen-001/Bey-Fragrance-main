@@ -34,14 +34,19 @@ const productWarnings = (product?: Product) => {
   return warnings;
 };
 
+// src/index.css is a precompiled Tailwind build: only classes already in it work,
+// so anything missing from it is written as an inline style below.
 const inputClass = 'w-full bg-white/5 border border-white/10 rounded-sm px-4 py-3 text-white focus:outline-none focus:border-[#d4af37]/50';
-const actionClass = 'flex items-center gap-1.5 px-3 py-2 border border-white/10 rounded-sm text-white/70 text-xs hover:text-[#d4af37] hover:border-[#d4af37]/50 transition-colors disabled:opacity-50';
+const actionBase = 'flex items-center gap-2 px-3 py-2 border border-white/10 rounded-sm text-white/70 text-xs transition-colors disabled:opacity-50';
+const actionClass = `${actionBase} hover:text-[#d4af37] hover:border-[#d4af37]/50`;
+const AMBER = '#fbbf24';
 
 function ProductThumb({ src }: { src: string | null | undefined }) {
+  const size = { width: 40, height: 48 };
   return src ? (
-    <img src={src} alt="" className="w-10 h-12 object-cover rounded-sm bg-white/5 flex-shrink-0" />
+    <img src={src} alt="" style={size} className="object-cover rounded-sm bg-white/5 flex-shrink-0" />
   ) : (
-    <div className="w-10 h-12 rounded-sm bg-white/5 flex items-center justify-center flex-shrink-0">
+    <div style={size} className="rounded-sm bg-white/5 flex items-center justify-center flex-shrink-0">
       <Package size={16} className="text-white/30" />
     </div>
   );
@@ -216,15 +221,14 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
       <div className="flex items-center justify-between mb-2 gap-3 min-w-0">
-        <h2 className="text-xl sm:text-3xl text-white font-serif truncate">Offer Links</h2>
+        <h2 className="text-2xl text-white font-serif truncate">Offer Links</h2>
         <Button
           variant="primary"
           onClick={openCreate}
-          className="flex items-center gap-1.5 px-3 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm flex-shrink-0"
+          className="flex items-center gap-2 px-4 py-3 text-xs flex-shrink-0"
         >
           <Plus size={14} />
-          <span className="hidden sm:inline">New Link</span>
-          <span className="sm:hidden">New</span>
+          New Link
         </Button>
       </div>
       <p className="text-white/50 text-sm mb-8">
@@ -257,14 +261,16 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
             return (
               <div
                 key={offer.id}
-                className={`bg-white/5 border rounded-sm p-4 sm:p-6 ${offer.isActive ? 'border-white/10' : 'border-white/5 opacity-70'}`}
+                style={offer.isActive ? undefined : { opacity: 0.7 }}
+                className={`bg-white/5 border rounded-sm p-4 ${offer.isActive ? 'border-white/10' : 'border-white/5'}`}
               >
-                <div className="flex flex-col lg:flex-row lg:items-center gap-4 min-w-0">
+                <div className="flex flex-col md:flex-row md:items-center gap-4 min-w-0">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1 min-w-0">
                       <h3 className="text-white font-serif text-lg truncate">{offer.title}</h3>
                       <span
-                        className={`text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-sm flex-shrink-0 ${offer.isActive ? 'bg-green-500/10 text-green-400' : 'bg-white/10 text-white/50'}`}
+                        style={{ fontSize: 10, ...(offer.isActive ? { backgroundColor: 'rgba(34, 197, 94, 0.1)' } : {}) }}
+                        className={`uppercase tracking-wider px-2 py-0.5 rounded-sm flex-shrink-0 ${offer.isActive ? 'text-green-400' : 'bg-white/10 text-white/50'}`}
                       >
                         {offer.isActive ? 'Active' : 'Off'}
                       </span>
@@ -275,18 +281,18 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 sm:gap-6 text-center flex-shrink-0">
+                  <div className="grid gap-4 text-center flex-shrink-0" style={{ gridTemplateColumns: 'repeat(3, minmax(0, 1fr))' }}>
                     <div>
                       <div className="text-white text-lg">{offer.visitCount.toLocaleString()}</div>
-                      <div className="text-white/40 text-[11px]">Visits</div>
+                      <div className="text-white/40 text-xs">Visits</div>
                     </div>
                     <div>
                       <div className="text-white text-lg">{offer.orderCount.toLocaleString()}</div>
-                      <div className="text-white/40 text-[11px]">Orders</div>
+                      <div className="text-white/40 text-xs">Orders</div>
                     </div>
                     <div>
                       <div className="text-[#d4af37] text-lg">{conversion}</div>
-                      <div className="text-white/40 text-[11px]">Conversion</div>
+                      <div className="text-white/40 text-xs">Conversion</div>
                     </div>
                   </div>
 
@@ -306,7 +312,7 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                     <button onClick={() => openEdit(offer)} disabled={busy} className={actionClass} aria-label="Edit link">
                       <Edit2 size={14} />
                     </button>
-                    <button onClick={() => handleDelete(offer)} disabled={busy} className={`${actionClass} hover:text-red-400 hover:border-red-400/50`} aria-label="Delete link">
+                    <button onClick={() => handleDelete(offer)} disabled={busy} className={`${actionBase} hover:text-red-400`} aria-label="Delete link">
                       <Trash2 size={14} />
                     </button>
                   </div>
@@ -320,12 +326,12 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
       {/* Create/Edit Link Modal */}
       {showForm && (
         <motion.div
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
           <motion.div
-            className="bg-[#1a1a1a] border border-white/20 rounded-sm p-5 sm:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8"
+            className="bg-[#1a1a1a] border border-white/20 rounded-sm p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto my-8"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
           >
@@ -353,8 +359,11 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
               {/* Link name */}
               <div>
                 <label className="text-white/70 text-sm mb-2 block">Link name *</label>
-                <div className="flex items-stretch min-w-0">
-                  <span className="hidden sm:flex items-center px-3 bg-white/5 border border-r-0 border-white/10 rounded-l-sm text-white/40 text-xs whitespace-nowrap">
+                <div className="flex min-w-0">
+                  <span
+                    style={{ borderRight: 0, whiteSpace: 'nowrap' }}
+                    className="hidden sm:flex items-center px-3 bg-white/5 border border-white/10 text-white/40 text-xs"
+                  >
                     {window.location.host}/offer/
                   </span>
                   <input
@@ -366,7 +375,7 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                       setFormError('');
                     }}
                     onBlur={() => setSlug(toSlug(slug))}
-                    className={`${inputClass} sm:rounded-l-none min-w-0`}
+                    className={`${inputClass} min-w-0`}
                     placeholder="scandal-1-million"
                     maxLength={60}
                   />
@@ -392,7 +401,7 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                           <div className="flex-1 min-w-0">
                             <div className="text-white text-sm truncate">{product?.name || 'Unknown product'}</div>
                             {warnings.length > 0 && (
-                              <div className="text-amber-400 text-xs flex items-center gap-1">
+                              <div style={{ color: AMBER }} className="text-xs flex items-center gap-1">
                                 <AlertTriangle size={12} className="flex-shrink-0" />
                                 {warnings.join(', ')}
                               </div>
@@ -420,7 +429,7 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                 </div>
 
                 {search.trim() && (
-                  <div className="mt-2 border border-white/10 rounded-sm divide-y divide-white/5">
+                  <div className="mt-2 border border-white/10 rounded-sm">
                     {searchResults.length === 0 ? (
                       <p className="text-white/40 text-sm p-3">No matching products</p>
                     ) : (
@@ -430,14 +439,14 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                           <button
                             key={product.id}
                             onClick={() => addProduct(product.id)}
-                            className="w-full flex items-center gap-3 p-2 text-left hover:bg-white/5 transition-colors min-w-0"
+                            className="w-full flex items-center gap-3 p-2 text-left border-b border-white/5 hover:bg-white/5 transition-colors min-w-0"
                           >
                             <ProductThumb src={product.mainImage} />
                             <div className="flex-1 min-w-0">
                               <div className="text-white text-sm truncate">{product.name}</div>
                               <div className="text-white/40 text-xs truncate">
                                 {warnings.length > 0 ? (
-                                  <span className="text-amber-400">{warnings.join(', ')}</span>
+                                  <span style={{ color: AMBER }}>{warnings.join(', ')}</span>
                                 ) : (
                                   product.inspiredBy || product.category || ''
                                 )}
@@ -452,8 +461,8 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                 )}
 
                 {hasWarnings && (
-                  <p className="text-amber-400/80 text-xs mt-3 flex items-start gap-1.5">
-                    <AlertTriangle size={14} className="flex-shrink-0 mt-px" />
+                  <p style={{ color: AMBER, opacity: 0.8 }} className="text-xs mt-3 flex items-start gap-2">
+                    <AlertTriangle size={14} style={{ marginTop: 1 }} className="flex-shrink-0" />
                     Products without a photo or sizes will look empty on the offer page.
                   </p>
                 )}
@@ -465,7 +474,7 @@ export default function AdminOfferLinks({ products, loadingProducts }: AdminOffe
                 </div>
               )}
 
-              <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
+              <div className="flex gap-3 pt-2">
                 <Button variant="outline" onClick={closeForm} disabled={saving} className="flex-1 px-6 py-3 text-sm">
                   Cancel
                 </Button>
