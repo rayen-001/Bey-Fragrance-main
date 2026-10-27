@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Product } from '../types';
+import { Product, OfferInput, OfferSummary, PublicOffer } from '../types';
 
 const API_BASE_URL = import.meta.env.PROD
   ? '/api'
@@ -237,6 +237,106 @@ export const ordersApi = {
     } catch (error) {
       console.error('Error updating order:', error);
       throw error;
+    }
+  },
+};
+
+// ============================================
+// OFFERS API (shareable product links)
+// ============================================
+
+const readApiError = async (response: Response, fallback: string) => {
+  const errorData = await response.json().catch(() => ({}));
+  return errorData.error || errorData.message || fallback;
+};
+
+export const offersApi = {
+  // List offer links with visit/order stats (Admin)
+  getAll: async (): Promise<OfferSummary[]> => {
+    const response = await fetch(`${API_BASE_URL}/offers`, {
+      headers: await getAuthHeaders(true),
+    });
+
+    if (!response.ok) {
+      throw new Error(await readApiError(response, 'Failed to fetch offer links'));
+    }
+
+    const data = await response.json();
+    return data.offers || [];
+  },
+
+  // Create offer link (Admin)
+  create: async (offer: OfferInput) => {
+    const response = await fetch(`${API_BASE_URL}/offers`, {
+      method: 'POST',
+      headers: await getAuthHeaders(true),
+      body: JSON.stringify(offer),
+    });
+
+    if (!response.ok) {
+      throw new Error(await readApiError(response, 'Failed to create offer link'));
+    }
+
+    const data = await response.json();
+    return data.offer;
+  },
+
+  // Edit offer link or turn it on/off (Admin)
+  update: async (id: string, changes: Partial<OfferInput>) => {
+    const response = await fetch(`${API_BASE_URL}/offers/${id}`, {
+      method: 'PUT',
+      headers: await getAuthHeaders(true),
+      body: JSON.stringify(changes),
+    });
+
+    if (!response.ok) {
+      throw new Error(await readApiError(response, 'Failed to update offer link'));
+    }
+
+    const data = await response.json();
+    return data.offer;
+  },
+
+  // Delete offer link; its orders stay (Admin)
+  delete: async (id: string) => {
+    const response = await fetch(`${API_BASE_URL}/offers/${id}`, {
+      method: 'DELETE',
+      headers: await getAuthHeaders(true),
+    });
+
+    if (!response.ok) {
+      throw new Error(await readApiError(response, 'Failed to delete offer link'));
+    }
+
+    return true;
+  },
+
+  // Landing page data (public); null when the link is off or doesn't exist
+  getBySlug: async (slug: string): Promise<PublicOffer | null> => {
+    const response = await fetch(`${API_BASE_URL}/offers/${encodeURIComponent(slug)}`, {
+      headers: await getAuthHeaders(),
+    });
+
+    if (response.status === 404) {
+      return null;
+    }
+    if (!response.ok) {
+      throw new Error('Failed to load offer');
+    }
+
+    const data = await response.json();
+    return data.offer;
+  },
+
+  // Count one visit (public); never throws so it can't break the page
+  trackVisit: async (slug: string) => {
+    try {
+      await fetch(`${API_BASE_URL}/offers/${encodeURIComponent(slug)}/visit`, {
+        method: 'POST',
+        headers: await getAuthHeaders(),
+      });
+    } catch (error) {
+      console.warn('Could not count offer visit:', error);
     }
   },
 };

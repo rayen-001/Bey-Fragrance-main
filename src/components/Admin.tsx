@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'motion/react';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Package, ShoppingBag, TrendingUp, Edit2, Trash2, Plus, LogOut, X, Tag, Image as ImageIcon, Upload, BarChart3, Search } from 'lucide-react';
+import { Package, ShoppingBag, TrendingUp, Edit2, Trash2, Plus, LogOut, X, Tag, Image as ImageIcon, Upload, BarChart3, Search, Link2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { logoutAdmin } from '../lib/adminAuth';
 import { AnalyticsStats } from './AnalyticsStats';
 import { GrossRevenueChart } from './GrossRevenueChart';
+import AdminOfferLinks from './AdminOfferLinks';
 import { getFragrances, productsApi, ordersApi } from '../lib/api';
 import type { Product as ApiProduct } from '../types';
 import { ImageWithFallback } from './figma/ImageWithFallback';
@@ -45,7 +46,7 @@ interface AdminProps {
 }
 
 export default function Admin({ onNavigate, onLogout }: AdminProps) {
-  const [activeTab, setActiveTab] = useState<'orders' | 'products' | 'analytics'>('orders');
+  const [activeTab, setActiveTab] = useState<'orders' | 'products' | 'analytics' | 'offers'>('orders');
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [editingProductId, setEditingProductId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -434,6 +435,16 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
           >
             <BarChart3 size={16} className="flex-shrink-0" />
             Analytics
+          </button>
+          <button
+            onClick={() => setActiveTab('offers')}
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 text-xs sm:text-sm font-medium whitespace-nowrap transition-all flex-shrink-0 ${activeTab === 'offers'
+                ? 'text-[#d4af37] border-b-2 border-[#d4af37]'
+                : 'text-white/50 hover:text-white/80'
+              }`}
+          >
+            <Link2 size={16} className="flex-shrink-0" />
+            Offer Links
           </button>
         </div>
 
@@ -1011,6 +1022,11 @@ export default function Admin({ onNavigate, onLogout }: AdminProps) {
               </div>
             </div>
           </motion.div>
+        )}
+
+        {/* ═══════════ Offer Links Tab ═══════════ */}
+        {activeTab === 'offers' && (
+          <AdminOfferLinks products={products} loadingProducts={loadingProducts} />
         )}
       </div>
     </div>

@@ -31,3 +31,41 @@ export interface Product {
   createdAt: string;
   shippingMethods?: ShippingMethod[];
 }
+
+// Offer links: a hand-picked set of products shared as one link (e.g. in sponsored ads)
+export interface OfferInput {
+  title: string;
+  slug: string;
+  productIds: string[];
+  isActive?: boolean;
+}
+
+export interface OfferSummary {
+  id: string;
+  slug: string;
+  title: string;
+  isActive: boolean;
+  visitCount: number;
+  orderCount: number;
+  createdAt: string;
+  products: { id: string; name: string; mainImage: string | null }[];
+}
+
+export interface OfferLandingProduct {
+  id: string;
+  name: string;
+  brand: string;
+  inspiredBy: string | null;
+  category: string | null;
+  concentration: string | null;
+  mainImage: string | null;
+  price: number;
+  sizes: { id: string; name: string; price: number }[];
+}
+
+export interface PublicOffer {
+  id: string;
+  slug: string;
+  title: string;
+  products: OfferLandingProduct[];
+}
