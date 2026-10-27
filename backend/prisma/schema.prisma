@@ -49,6 +49,7 @@ model Product {
   productType     String           @default("extrait_parfum") @map("product_type")
   cartItems       CartItem[]
   favorites       Favorite[]
+  offerProducts   OfferProduct[]
   orderItems      OrderItem[]
   reviews         Review[]
   shippingMethods ShippingMethod[]
@@ -85,9 +86,12 @@ model Order {
   quantity        Int?
   deliveryMethod  String?     @map("delivery_method")
   shippingFee     Decimal?    @map("shipping_fee") @db.Decimal(10, 2)
+  offerId         String?     @map("offer_id") @db.Uuid
   items           OrderItem[]
   user            User?       @relation(fields: [userId], references: [id])
+  offer           Offer?      @relation(fields: [offerId], references: [id], onDelete: SetNull)
 
+  @@index([offerId])
   @@map("orders")
 }
 
@@ -148,6 +152,35 @@ model Review {
 
   @@unique([userId, productId], name: "userId_productId")
   @@map("reviews")
+}
+
+/// Shareable offer links (e.g. for sponsored ads) showing a hand-picked set of products.
+model Offer {
+  id         String         @id @default(uuid()) @db.Uuid
+  slug       String         @unique
+  title      String
+  isActive   Boolean        @default(true) @map("is_active")
+  visitCount Int            @default(0) @map("visit_count")
+  createdAt  DateTime       @default(now()) @map("created_at")
+  updatedAt  DateTime       @updatedAt @map("updated_at")
+  products   OfferProduct[]
+  orders     Order[]
+
+  @@map("offers")
+}
+
+/// Products included in an offer link, in display order.
+model OfferProduct {
+  id        String  @id @default(uuid()) @db.Uuid
+  offerId   String  @map("offer_id") @db.Uuid
+  productId String  @map("product_id") @db.Uuid
+  position  Int     @default(0)
+  offer     Offer   @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([offerId, productId])
+  @@index([productId])
+  @@map("offer_products")
 }
 
 enum Role {

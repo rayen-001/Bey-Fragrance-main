@@ -16,6 +16,7 @@ import orders from './routes/orders'
 import analytics from './routes/analytics'
 import cart from './routes/cart'
 import reviews from './routes/reviews'
+import offers from './routes/offers'
 import { authMiddleware } from './middleware/auth'
 import { prisma } from './db/prisma'
 
@@ -98,6 +99,8 @@ api.route('/fragrances', fragrances)
 api.route('/orders', orders)
 api.route('/analytics', analytics)
 api.route('/reviews', reviews)
+// Offers: public GET /:slug and POST /:slug/visit; admin routes are guarded inside the router
+api.route('/offers', offers)
 
 // Mount the api router under both root '/' and '/api' paths to support dual hosting
 app.route('/api', api)

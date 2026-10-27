@@ -5,6 +5,8 @@ import { getSupabase } from '../db/supabase'
 
 const orders = new Hono()
 
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 /**
  * Ensures a Supabase user exists in the local public.users table.
  * This is required because Order.userId has a FK referencing public.users.id.
@@ -71,10 +73,23 @@ orders.post('/', async (c) => {
       phoneNumber, 
       items: orderItems,
       shippingFee,
-      deliveryMethod
+      deliveryMethod,
+      offerId
     } = body
 
     console.log('📦 Creating order with payload:', { clientName, itemsCount: orderItems?.length || 0, userId });
+
+    // Tag the order with its offer link only if that link exists and is on.
+    // A failed lookup must never block the order itself.
+    let validOfferId: string | null = null
+    if (typeof offerId === 'string' && UUID_PATTERN.test(offerId)) {
+      try {
+        const offer = await prisma.offer.findUnique({ where: { id: offerId }, select: { id: true, isActive: true } })
+        if (offer?.isActive) validOfferId = offer.id
+      } catch (err) {
+        console.warn('[Orders] Offer lookup failed, saving order without offer tag:', err)
+      }
+    }
 
     let calculatedTotal = 0
     let totalCalculatedQuantity = 0
@@ -207,6 +222,7 @@ orders.post('/', async (c) => {
         shippingFee: Number(shippingFee) || 0,
         deliveryMethod: deliveryMethod || 'Standard',
         userId: userId || null,
+        offerId: validOfferId,
         status: 'Pending',
         product: productName || (itemsToCreate.length > 0 && itemsToCreate[0].product?.connect?.id ? `Product: ${itemsToCreate[0].product.connect.id}` : 'Various Items'), 
         quantity: totalCalculatedQuantity || 1,
